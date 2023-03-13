@@ -4,8 +4,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	"github.com/gridiron-zone/gridiron/modules/guardian/keeper"
-	"github.com/gridiron-zone/gridiron/modules/guardian/types"
+	"github.com/furynet/furyhub/modules/guardian/keeper"
+	"github.com/furynet/furyhub/modules/guardian/types"
 )
 
 // NewHandler returns a handler for all "guardian" type messages.

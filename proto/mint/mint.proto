@@ -4,7 +4,7 @@ package gridiron.mint;
 import "gogoproto/gogo.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/gridiron-zone/gridiron/modules/mint/types";
+option go_package = "github.com/furynet/furyhub/modules/mint/types";
 
 // Minter represents the minting state
 message Minter {

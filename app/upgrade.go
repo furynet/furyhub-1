@@ -56,13 +56,13 @@ import (
 	tibcclienttypes "github.com/bianjieai/tibc-go/modules/tibc/core/02-client/types"
 	tibchost "github.com/bianjieai/tibc-go/modules/tibc/core/24-host"
 
-	migratehtlc "github.com/gridiron-zone/gridiron/migrate/htlc"
-	migrateservice "github.com/gridiron-zone/gridiron/migrate/service"
-	migratetibc "github.com/gridiron-zone/gridiron/migrate/tibc"
-	"github.com/gridiron-zone/gridiron/modules/guardian"
-	guardiantypes "github.com/gridiron-zone/gridiron/modules/guardian/types"
-	"github.com/gridiron-zone/gridiron/modules/mint"
-	minttypes "github.com/gridiron-zone/gridiron/modules/mint/types"
+	migratehtlc "github.com/furynet/furyhub/migrate/htlc"
+	migrateservice "github.com/furynet/furyhub/migrate/service"
+	migratetibc "github.com/furynet/furyhub/migrate/tibc"
+	"github.com/furynet/furyhub/modules/guardian"
+	guardiantypes "github.com/furynet/furyhub/modules/guardian/types"
+	"github.com/furynet/furyhub/modules/mint"
+	minttypes "github.com/furynet/furyhub/modules/mint/types"
 )
 
 // RegisterUpgradePlan register a handler of upgrade plan

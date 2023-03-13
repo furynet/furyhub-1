@@ -4,7 +4,7 @@ package gridiron.guardian;
 import "guardian/guardian.proto";
 import "gogoproto/gogo.proto";
 
-option go_package = "github.com/gridiron-zone/gridiron/modules/guardian/types";
+option go_package = "github.com/furynet/furyhub/modules/guardian/types";
 
 // GenesisState defines the guardian module's genesis state
 message GenesisState {

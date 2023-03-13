@@ -3,7 +3,7 @@ package gridiron.guardian;
 
 import "gogoproto/gogo.proto";
 
-option go_package = "github.com/gridiron-zone/gridiron/modules/guardian/types";
+option go_package = "github.com/furynet/furyhub/modules/guardian/types";
 
 // Super defines the super standard
 message Super {

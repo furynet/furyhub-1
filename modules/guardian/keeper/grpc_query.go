@@ -9,7 +9,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/query"
 
-	"github.com/gridiron-zone/gridiron/modules/guardian/types"
+	"github.com/furynet/furyhub/modules/guardian/types"
 )
 
 var _ types.QueryServer = Keeper{}

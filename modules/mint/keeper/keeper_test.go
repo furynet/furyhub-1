@@ -11,8 +11,8 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/gridiron-zone/gridiron/modules/mint/types"
-	"github.com/gridiron-zone/gridiron/simapp"
+	"github.com/furynet/furyhub/modules/mint/types"
+	"github.com/furynet/furyhub/simapp"
 )
 
 type KeeperTestSuite struct {
