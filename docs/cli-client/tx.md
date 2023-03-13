@@ -94,7 +94,7 @@ The `signed.json` should look like:
                             "address": "fury:grid:aa106nhdckyf996q69v3qdxwe6y7408pvyvyxzhxh",
                             "coins": [
                                 {
-                                    "denom": "ugrid",
+                                    "denom": "ufury",
                                     "amount": "1000000"
                                 }
                             ]
@@ -105,7 +105,7 @@ The `signed.json` should look like:
                             "address": "fury:grid:aa1893x4l2rdshytfzvfpduecpswz7qtpstevr742",
                             "coins": [
                                 {
-                                    "denom": "ugrid",
+                                    "denom": "ufury",
                                     "amount": "1000000"
                                 }
                             ]
@@ -117,7 +117,7 @@ The `signed.json` should look like:
         "fee": {
             "amount": [
                 {
-                    "denom": "ugrid",
+                    "denom": "ufury",
                     "amount": "4000000"
                 }
             ],

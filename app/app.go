@@ -325,10 +325,10 @@ func init() {
 	sdk.SetCoinDenomRegex(DefaultCoinDenomRegex)
 
 	nativeToken = tokentypes.Token{
-		Symbol:        "grid",
+		Symbol:        "fury",
 		Name:          "Gridiron staking token",
 		Scale:         6,
-		MinUnit:       "ugrid",
+		MinUnit:       "ufury",
 		InitialSupply: 2000000000,
 		MaxSupply:     10000000000,
 		Mintable:      true,

@@ -35,7 +35,7 @@ func GetCmdCreateSuper() *cobra.Command {
 		Use:   "add-super",
 		Short: "Add a new super",
 		Example: fmt.Sprintf(
-			"%s tx guardian add-super --chain-id=<chain-id> --from=<key-name> --fees=0.3grid --address=<added address> --description=<name>",
+			"%s tx guardian add-super --chain-id=<chain-id> --from=<key-name> --fees=0.3fury --address=<added address> --description=<name>",
 			version.AppName,
 		),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -76,7 +76,7 @@ func GetCmdDeleteSuper() *cobra.Command {
 		Use:   "delete-super",
 		Short: "Delete a super",
 		Example: fmt.Sprintf(
-			"%s tx guardian delete-super --chain-id=<chain-id> --from=<key-name> --fees=0.3grid --address=<deleted address>",
+			"%s tx guardian delete-super --chain-id=<chain-id> --from=<key-name> --fees=0.3fury --address=<deleted address>",
 			version.AppName,
 		),
 		RunE: func(cmd *cobra.Command, args []string) error {

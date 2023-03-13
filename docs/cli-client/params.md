@@ -34,7 +34,7 @@ Among them, the parameters available for query for each subspace are as follows:
 | `UnbondingTime`     | Mortgage redemption time                                        | 3w(weeks) |
 | `MaxValidators`     | Maximum number of validators                                    | 100       |
 | `MaxEntries`        | The maximum number of unbinding/redelegation orders in progress | 7         |
-| `BondDenom`         | Bond denom                                                      | ugrid     |
+| `BondDenom`         | Bond denom                                                      | ufury     |
 | `HistoricalEntries` | The number of historical entries                                | 100       |
 
 ## mint
@@ -42,7 +42,7 @@ Among them, the parameters available for query for each subspace are as follows:
 | key         | description                 | default |
 | ----------- | --------------------------- | ------- |
 | `Inflation` | Token issuance frequency    | 0.04    |
-| `MintDenom` | Denom of the token mintable | ugrid   |
+| `MintDenom` | Denom of the token mintable | ufury   |
 
 ## distribution
 
@@ -82,14 +82,14 @@ Among them, the parameters available for query for each subspace are as follows:
 | key                 | description                       | default            |
 | ------------------- | --------------------------------- | ------------------ |
 | `TokenTaxRate`      | Base rate for issuing/mint tokens | 0.4                |
-| `IssueTokenBaseFee` | Base token for issuing tokens     | 60000 * 10^6 ugrid |
+| `IssueTokenBaseFee` | Base token for issuing tokens     | 60000 * 10^6 ufury |
 | `MintTokenFeeRatio` | Rate for mint tokens              | 0.1                |
 
 ## coinswap
 
 | key             | description                   | default |
 | --------------- | ----------------------------- | ------- |
-| `StandardDenom` | The name of the token charged | ugrid   |
+| `StandardDenom` | The name of the token charged | ufury   |
 
 ## htlc
 
@@ -123,5 +123,5 @@ AssetParam参数如下：
 | `ComplaintRetrospect`       | Complaint retrospect                                | 15d        |
 | `ArbitrationTimeLimit`      | Arbitration period                                  | 5d         |
 | `TxSizeLimit`               | The maximum number of bytes per service transaction | 4000       |
-| `BaseDenom`                 | Tokens supported by service fees                    | ugrid      |
+| `BaseDenom`                 | Tokens supported by service fees                    | ufury      |
 | `RestrictedServiceFeeDenom` | Restricted service fee denom                        | false      |

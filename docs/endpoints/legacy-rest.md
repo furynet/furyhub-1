@@ -322,7 +322,7 @@ The same code as integrating with gridiron-v0.16.3 mainnet. The transaction stru
                     "to_address": "fury:grid:aa1q6t5439f0rkvkzl38m0f43e0kpv3mx7x2shlq8",
                     "amount": [
                         {
-                            "denom": "ugrid",
+                            "denom": "ufury",
                             "amount": "1000000"
                         }
                     ]
@@ -332,7 +332,7 @@ The same code as integrating with gridiron-v0.16.3 mainnet. The transaction stru
         "fee": {
             "amount": [
                 {
-                    "denom": "ugrid",
+                    "denom": "ufury",
                     "amount": "30000"
                 }
             ],
@@ -349,7 +349,7 @@ Where the GRIDhub address prefix uses `did:fury:aa` instead, which affects the f
 - value.msg.value.from_adress
 - value.msg.value.to_address
 
-Denom uses `ugrid` instead (1grid = 10<sup>6</sup>ugrid), which affects fields:
+Denom uses `ufury` instead (1grid = 10<sup>6</sup>ufury), which affects fields:
 
 - value.msg.value.amount.denom
 - value.fee.amount.denom
@@ -359,7 +359,7 @@ Denom uses `ugrid` instead (1grid = 10<sup>6</sup>ugrid), which affects fields:
 The same code as integrating with gridiron mainnet, call `POST` `/txs` to send a transaction, as the example below:
 
 ```bash
-curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"tx\": {\"msg\":[{\"type\":\"cosmos-sdk/MsgSend\",\"value\":{\"from_address\":\"fury:grid:aa1rkgdpj6fyyyu7pnhmc3v7gw9uls4mnajvzdwkt\",\"to_address\":\"fury:grid:aa1q6t5439f0rkvkzl38m0f43e0kpv3mx7x2shlq8\",\"amount\":[{\"denom\":\"ugrid\",\"amount\":\"1000000\"}]}}],\"fee\":{\"amount\":[{\"denom\":\"ugrid\",\"amount\":\"30000\"}],\"gas\":\"200000\"},\"signatures\":[{\"pub_key\":{\"type\":\"tendermint/PubKeySecp256k1\",\"value\":\"AxGagdsRTKni/h1+vCFzTpNltwoiU7SwIR2dg6Jl5a//\"},\"signature\":\"Pu8yiRVO8oB2YDDHyB047dXNArbVImasmKBrm8Kr+6B08y8QQ7YG1eVgHi5OIYYclccCf3Ju/BQ78qsMWMniNQ==\"}],\"memo\":\"Sent via gridiron client\"}, \"mode\": \"block\"}"
+curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"tx\": {\"msg\":[{\"type\":\"cosmos-sdk/MsgSend\",\"value\":{\"from_address\":\"fury:grid:aa1rkgdpj6fyyyu7pnhmc3v7gw9uls4mnajvzdwkt\",\"to_address\":\"fury:grid:aa1q6t5439f0rkvkzl38m0f43e0kpv3mx7x2shlq8\",\"amount\":[{\"denom\":\"ufury\",\"amount\":\"1000000\"}]}}],\"fee\":{\"amount\":[{\"denom\":\"ufury\",\"amount\":\"30000\"}],\"gas\":\"200000\"},\"signatures\":[{\"pub_key\":{\"type\":\"tendermint/PubKeySecp256k1\",\"value\":\"AxGagdsRTKni/h1+vCFzTpNltwoiU7SwIR2dg6Jl5a//\"},\"signature\":\"Pu8yiRVO8oB2YDDHyB047dXNArbVImasmKBrm8Kr+6B08y8QQ7YG1eVgHi5OIYYclccCf3Ju/BQ78qsMWMniNQ==\"}],\"memo\":\"Sent via gridiron client\"}, \"mode\": \"block\"}"
 ```
 
 ## Breaking Changes in Querying Transactions
@@ -434,7 +434,7 @@ curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Conte
                           "to_address": "fury:grid:aa1w976a5jrhsj06dqmrh2x9qxzel74qtcmapklxc",
                           "amount": [
                               {
-                                  "denom": "ugrid",
+                                  "denom": "ufury",
                                   "amount": "1000000"
                               }
                           ]
@@ -444,7 +444,7 @@ curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Conte
               "fee": {
                   "amount": [
                       {
-                          "denom": "ugrid",
+                          "denom": "ufury",
                           "amount": "30000"
                       }
                   ],

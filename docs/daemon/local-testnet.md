@@ -37,7 +37,7 @@ grid keys add MyValidator
 Add that key into the genesis.app_state.accounts array in the genesis file
 
 :::tip
-this command lets you set the number of coins. Make sure this account has some ugrid which is the only staking coin on GRIDhub
+this command lets you set the number of coins. Make sure this account has some ufury which is the only staking coin on GRIDhub
 :::
 
 ```bash
@@ -62,10 +62,10 @@ grid collect-gentxs
 
 ### grid start
 
-Change the default token denom to `ugrid`
+Change the default token denom to `ufury`
 
 ```bash
-sed -i 's/stake/ugrid/g' $HOME/.grid/config/genesis.json
+sed -i 's/stake/ufury/g' $HOME/.grid/config/genesis.json
 ```
 
 Now it‘s ready to start `grid`

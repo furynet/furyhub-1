@@ -28,7 +28,7 @@ AnnualInflationAmount = inflationBasement * inflationRate
 blockInflationAmount = AnnualInflationAmount * blockCostTime / (year)
 ```
 
-The value of `inflationBasement` is specified in genesis file. By default its value `2000000000grid`(2 billion grid, `1 grid` equals `1*10^18 ugrid`), and its value will never be changed.
+The value of `inflationBasement` is specified in genesis file. By default its value `2000000000grid`(2 billion grid, `1 grid` equals `1*10^18 ufury`), and its value will never be changed.
 Suppose `blockCostTime` is 5000 millisecond, and `inflationRate` is `4%`, then the inflation amount will be `12675235125611580094ugrid` (`12.675235125611580094grid`)
 
 ## Impact to users

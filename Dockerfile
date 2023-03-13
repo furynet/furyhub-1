@@ -1,5 +1,5 @@
 #
-# Build image: docker build -t gridiron-zone/gridiron .
+# Build image: docker build -t fanfury/fanfury .
 #
 FROM golang:1.18-alpine3.16 as builder
 

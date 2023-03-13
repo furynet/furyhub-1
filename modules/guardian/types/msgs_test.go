@@ -51,7 +51,7 @@ func TestMsgAddSuperType(t *testing.T) {
 func TestMsgAddSuperGetSignBytes(t *testing.T) {
 	msg := NewMsgAddSuper(description, testAddr, sender)
 	res := msg.GetSignBytes()
-	expected := `{"type":"gridiron/guardian/MsgAddSuper","value":{"added_by":"fury:grid:aa1pgm8hyk0pvphmlvfjc8wsvk4daluz5tgwp4wlf","address":"fury:grid:aa1n7rdpqvgf37ktx30a2sv2kkszk3m7ncmakdj4g","description":"description"}}`
+	expected := `{"type":"gridiron/guardian/MsgAddSuper","value":{"added_by":"did:fury:aa1pgm8hyk0pvphmlvfjc8wsvk4daluz5tgwp4wlf","address":"did:fury:aa1n7rdpqvgf37ktx30a2sv2kkszk3m7ncmakdj4g","description":"description"}}`
 	require.Equal(t, expected, string(res))
 }
 
@@ -110,7 +110,7 @@ func TestMsgDeleteSuperType(t *testing.T) {
 func TestMsgDeleteSuperGetSignBytes(t *testing.T) {
 	msg := NewMsgDeleteSuper(testAddr, sender)
 	res := msg.GetSignBytes()
-	expected := `{"type":"gridiron/guardian/MsgDeleteSuper","value":{"address":"fury:grid:aa1n7rdpqvgf37ktx30a2sv2kkszk3m7ncmakdj4g","deleted_by":"fury:grid:aa1pgm8hyk0pvphmlvfjc8wsvk4daluz5tgwp4wlf"}}`
+	expected := `{"type":"gridiron/guardian/MsgDeleteSuper","value":{"address":"did:fury:aa1n7rdpqvgf37ktx30a2sv2kkszk3m7ncmakdj4g","deleted_by":"did:fury:aa1pgm8hyk0pvphmlvfjc8wsvk4daluz5tgwp4wlf"}}`
 	require.Equal(t, expected, string(res))
 }
 
