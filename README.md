@@ -1,6 +1,6 @@
 # GRID
 
-![Banner](https://raw.githubusercontent.com/gridiron-zone/gridiron/master/docs/pics/grid.jpg)
+![Banner](https://raw.githubusercontent.com/furynet/furyhub/staging/docs/pics/grid.jpg)
 
 [![License](https://img.shields.io/github/license/gridiron-zone/gridiron.svg)](https://github.com/gridiron-zone/gridiron/blob/master/LICENSE)
 [![Version](https://img.shields.io/github/tag/gridiron-zone/gridiron.svg)](https://github.com/gridiron-zone/gridiron/releases)
