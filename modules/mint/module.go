@@ -19,11 +19,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 
-	"github.com/irisnet/irishub/modules/mint/client/cli"
-	"github.com/irisnet/irishub/modules/mint/client/rest"
-	"github.com/irisnet/irishub/modules/mint/keeper"
-	"github.com/irisnet/irishub/modules/mint/simulation"
-	"github.com/irisnet/irishub/modules/mint/types"
+	"github.com/furynet/furyhub/modules/mint/client/cli"
+	"github.com/furynet/furyhub/modules/mint/client/rest"
+	"github.com/furynet/furyhub/modules/mint/keeper"
+	"github.com/furynet/furyhub/modules/mint/simulation"
+	"github.com/furynet/furyhub/modules/mint/types"
 )
 
 var (

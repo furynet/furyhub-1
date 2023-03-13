@@ -1,13 +1,13 @@
 {
   "name": "docs",
   "version": "1.0.0",
-  "description": "IRISnet Documents",
+  "description": "FURYnet Documents",
   "main": "index.js",
   "scripts": {
     "serve": "vuepress dev",
     "build": "vuepress build"
   },
-  "author": "IRISnet Dev Team",
+  "author": "FURYnet Dev Team",
   "license": "ISC",
   "devDependencies": {
     "@vuepress/plugin-search": "^1.9.7",

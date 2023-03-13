@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/irisnet/irishub/types"
+	"github.com/furynet/furyhub/types"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
 	"github.com/cosmos/cosmos-sdk/simapp"
@@ -14,7 +14,7 @@ import (
 )
 
 // Profile with:
-// /usr/local/go/bin/go test -benchmem -run=^$ github.com/irisnet/app -bench ^BenchmarkFullAppSimulation$ -Commit=true -cpuprofile cpu.out
+// /usr/local/go/bin/go test -benchmem -run=^$ github.com/furynet/app -bench ^BenchmarkFullAppSimulation$ -Commit=true -cpuprofile cpu.out
 func BenchmarkFullAppSimulation(b *testing.B) {
 	config, db, dir, logger, _, err := simapp.SetupSimulation("goleveldb-app-sim", "Simulation")
 	if err != nil {
@@ -29,7 +29,7 @@ func BenchmarkFullAppSimulation(b *testing.B) {
 		}
 	}()
 
-	app := NewIrisApp(logger, db, nil, true, map[int64]bool{}, types.DefaultNodeHome, simapp.FlagPeriodValue, MakeEncodingConfig(), EmptyAppOptions{}, interBlockCacheOpt())
+	app := NewFuryApp(logger, db, nil, true, map[int64]bool{}, types.DefaultNodeHome, simapp.FlagPeriodValue, MakeEncodingConfig(), EmptyAppOptions{}, interBlockCacheOpt())
 
 	// run randomized simulation
 	_, simParams, simErr := simulation.SimulateFromSeed(
@@ -74,7 +74,7 @@ func BenchmarkInvariants(b *testing.B) {
 		}
 	}()
 
-	app := NewIrisApp(logger, db, nil, true, map[int64]bool{}, types.DefaultNodeHome, simapp.FlagPeriodValue, MakeEncodingConfig(), EmptyAppOptions{}, interBlockCacheOpt())
+	app := NewFuryApp(logger, db, nil, true, map[int64]bool{}, types.DefaultNodeHome, simapp.FlagPeriodValue, MakeEncodingConfig(), EmptyAppOptions{}, interBlockCacheOpt())
 
 	// run randomized simulation
 	_, simParams, simErr := simulation.SimulateFromSeed(

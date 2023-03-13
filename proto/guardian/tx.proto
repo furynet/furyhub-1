@@ -1,7 +1,7 @@
 syntax = "proto3";
-package irishub.guardian;
+package furyhub.guardian;
 
-option go_package = "github.com/irisnet/irishub/modules/guardian/types";
+option go_package = "github.com/furynet/furyhub/modules/guardian/types";
 
 // Msg defines the guardian Msg service
 service Msg {

@@ -36,10 +36,10 @@ import (
 	etherminthd "github.com/evmos/ethermint/crypto/hd"
 	servercfg "github.com/evmos/ethermint/server/config"
 
-	"github.com/irisnet/irishub/app"
-	"github.com/irisnet/irishub/app/params"
-	irisserver "github.com/irisnet/irishub/server"
-	iristypes "github.com/irisnet/irishub/types"
+	"github.com/furynet/furyhub/app"
+	"github.com/furynet/furyhub/app/params"
+	furyserver "github.com/furynet/furyhub/server"
+	furytypes "github.com/furynet/furyhub/types"
 )
 
 // NewRootCmd creates a new root command for simd. It is called once in the
@@ -54,13 +54,13 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		WithInput(os.Stdin).
 		WithAccountRetriever(types.AccountRetriever{}).
 		WithBroadcastMode(flags.BroadcastBlock).
-		WithHomeDir(iristypes.DefaultNodeHome).
+		WithHomeDir(furytypes.DefaultNodeHome).
 		WithKeyringOptions(etherminthd.EthSecp256k1Option()).
 		WithViper("")
 
 	rootCmd := &cobra.Command{
-		Use:   "iris",
-		Short: "IRIS Hub app command",
+		Use:   "fury",
+		Short: "FURY Hub app command",
 		PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
 			initClientCtx, err := client.ReadPersistentCommandFlags(initClientCtx, cmd.Flags())
 			if err != nil {
@@ -78,9 +78,9 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 
 			converter.handlePreRun(cmd, args)
 
-			customTemplate, customIRISHubConfig := initAppConfig()
+			customTemplate, customFURYHubConfig := initAppConfig()
 			customTMConfig := initTendermintConfig()
-			return server.InterceptConfigsPreRunHandler(cmd, customTemplate, customIRISHubConfig, customTMConfig)
+			return server.InterceptConfigsPreRunHandler(cmd, customTemplate, customFURYHubConfig, customTMConfig)
 		},
 		PersistentPostRun: func(cmd *cobra.Command, _ []string) {
 			converter.handlePostRun(cmd)
@@ -107,7 +107,7 @@ func initTendermintConfig() *tmcfg.Config {
 // initAppConfig helps to override default appConfig template and configs.
 // return "", nil if no custom configuration is required for the application.
 func initAppConfig() (string, interface{}) {
-	customAppTemplate, customAppConfig := servercfg.AppConfig(iristypes.NativeToken.MinUnit)
+	customAppTemplate, customAppConfig := servercfg.AppConfig(furytypes.NativeToken.MinUnit)
 	srvCfg, ok := customAppConfig.(servercfg.Config)
 	if !ok {
 		panic(fmt.Errorf("unknown app config type %T", customAppConfig))
@@ -121,11 +121,11 @@ func initAppConfig() (string, interface{}) {
 
 func initRootCmd(rootCmd *cobra.Command, encodingConfig params.EncodingConfig) {
 	rootCmd.AddCommand(
-		genutilcli.InitCmd(app.ModuleBasics, iristypes.DefaultNodeHome),
-		genutilcli.CollectGenTxsCmd(banktypes.GenesisBalancesIterator{}, iristypes.DefaultNodeHome),
-		genutilcli.GenTxCmd(app.ModuleBasics, encodingConfig.TxConfig, banktypes.GenesisBalancesIterator{}, iristypes.DefaultNodeHome),
+		genutilcli.InitCmd(app.ModuleBasics, furytypes.DefaultNodeHome),
+		genutilcli.CollectGenTxsCmd(banktypes.GenesisBalancesIterator{}, furytypes.DefaultNodeHome),
+		genutilcli.GenTxCmd(app.ModuleBasics, encodingConfig.TxConfig, banktypes.GenesisBalancesIterator{}, furytypes.DefaultNodeHome),
 		genutilcli.ValidateGenesisCmd(app.ModuleBasics),
-		AddGenesisAccountCmd(iristypes.DefaultNodeHome),
+		AddGenesisAccountCmd(furytypes.DefaultNodeHome),
 		tmcli.NewCompletionCmd(rootCmd, true),
 		testnetCmd(app.ModuleBasics, banktypes.GenesisBalancesIterator{}),
 		ethermintdebug.Cmd(),
@@ -137,14 +137,14 @@ func initRootCmd(rootCmd *cobra.Command, encodingConfig params.EncodingConfig) {
 		encCfg: encodingConfig,
 	}
 
-	irisserver.AddCommands(rootCmd, iristypes.DefaultNodeHome, ac.newApp, ac.appExport, addModuleInitFlags)
+	furyserver.AddCommands(rootCmd, furytypes.DefaultNodeHome, ac.newApp, ac.appExport, addModuleInitFlags)
 
 	// add keybase, auxiliary RPC, query, and tx child commands
 	rootCmd.AddCommand(
 		rpc.StatusCommand(),
 		queryCommand(),
 		txCommand(),
-		Commands(iristypes.DefaultNodeHome),
+		Commands(furytypes.DefaultNodeHome),
 	)
 }
 
@@ -237,7 +237,7 @@ func (ac appCreator) newApp(logger log.Logger, db dbm.DB, traceStore io.Writer, 
 		cast.ToUint32(appOpts.Get(server.FlagStateSyncSnapshotKeepRecent)),
 	)
 
-	return app.NewIrisApp(
+	return app.NewFuryApp(
 		logger, db, traceStore, true, skipUpgradeHeights,
 		cast.ToString(appOpts.Get(flags.FlagHome)),
 		cast.ToUint(appOpts.Get(server.FlagInvCheckPeriod)),
@@ -257,7 +257,7 @@ func (ac appCreator) newApp(logger log.Logger, db dbm.DB, traceStore io.Writer, 
 	)
 }
 
-// createIrisappAndExport creates a new irisapp (optionally at a given height) and exports state.
+// createFuryappAndExport creates a new furyapp (optionally at a given height) and exports state.
 func (ac appCreator) appExport(
 	logger log.Logger,
 	db dbm.DB,
@@ -279,7 +279,7 @@ func (ac appCreator) appExport(
 		loadLatest = true
 	}
 
-	irisApp := app.NewIrisApp(
+	furyApp := app.NewFuryApp(
 		logger,
 		db,
 		traceStore,
@@ -292,10 +292,10 @@ func (ac appCreator) appExport(
 	)
 
 	if height != -1 {
-		if err := irisApp.LoadHeight(height); err != nil {
+		if err := furyApp.LoadHeight(height); err != nil {
 			return servertypes.ExportedApp{}, err
 		}
 	}
 
-	return irisApp.ExportAppStateAndValidators(forZeroHeight, jailAllowedAddrs)
+	return furyApp.ExportAppStateAndValidators(forZeroHeight, jailAllowedAddrs)
 }

@@ -2,7 +2,7 @@
 
 ## Summary
 
-IRIShub introduce two types of privileged system user controlled by foundations, the profiler and the trustee.
+FURYhub introduce two types of privileged system user controlled by foundations, the profiler and the trustee.
 
 * Profiler privileges
     1. Submit software upgrade/halt proposal by governance.
@@ -23,13 +23,13 @@ IRIShub introduce two types of privileged system user controlled by foundations,
     Add Profiler (Genesis Profiler account only)
 
     ```bash
-    iris tx guardian add-profiler --address=<profiler-address> --description=<profiler-description> --chain-id=irishub --from=<key-name> --fees=0.3iris
+    fury tx guardian add-profiler --address=<profiler-address> --description=<profiler-description> --chain-id=furyhub --from=<key-name> --fees=0.3fury
     ```
 
     Add Trustee (Genesis Trustee account only)
 
     ```bash
-    iris tx guardian add-trustee --address=<trustee-address> --description=<trustee-description> --chain-id=irishub --from=<key-name> --fees=0.3iris
+    fury tx guardian add-trustee --address=<trustee-address> --description=<trustee-description> --chain-id=furyhub --from=<key-name> --fees=0.3fury
     ```
 
 2. Query Profiler and Trustee list
@@ -37,13 +37,13 @@ IRIShub introduce two types of privileged system user controlled by foundations,
     Query Profiler list
 
     ```bash
-    iris q guardian profilers
+    fury q guardian profilers
     ```
 
     Query Trustee list
 
     ```bash
-    iris q guardian trustees
+    fury q guardian trustees
     ```
 
 3. Profiler submit software upgrade/halt proposal
@@ -55,7 +55,7 @@ IRIShub introduce two types of privileged system user controlled by foundations,
     Service fee exempted
 
     ```bash
-    iris tx service call --def-chain-id=<def-chain-id> --service-name=<service-name> --method-id=<method-id> --bind-chain-id=<bind-chain-id> --provider=<provider-address> --service-fee=1iris --request-data=<request-data> --chain-id=irishub --from=<key-name> --fees=0.3iris --profiling=true
+    fury tx service call --def-chain-id=<def-chain-id> --service-name=<service-name> --method-id=<method-id> --bind-chain-id=<bind-chain-id> --provider=<provider-address> --service-fee=1fury --request-data=<request-data> --chain-id=furyhub --from=<key-name> --fees=0.3fury --profiling=true
     ```
 
 5. Trustee to be the destination address of `CommunityTaxUsage` proposal
@@ -67,11 +67,11 @@ IRIShub introduce two types of privileged system user controlled by foundations,
     Delete Profiler (Genesis Trustee account only)
 
     ```bash
-    iris tx guardian delete-profiler --chain-id=irishub --from=<key-name> --fees=0.3iris --address=<profiler-address>
+    fury tx guardian delete-profiler --chain-id=furyhub --from=<key-name> --fees=0.3fury --address=<profiler-address>
     ```
 
     Delete Trustee (Genesis Trustee account only)
 
     ```bash
-    iris tx guardian delete-trustee --chain-id=irishub --from=<key-name> --fees=0.3iris --address=<trustee-address>
+    fury tx guardian delete-trustee --chain-id=furyhub --from=<key-name> --fees=0.3fury --address=<trustee-address>
     ```

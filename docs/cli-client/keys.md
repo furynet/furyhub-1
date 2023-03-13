@@ -1,27 +1,27 @@
 # Keys
 
-Keys allows you to manage your local tendermint keystore (wallets) for iris.
+Keys allows you to manage your local tendermint keystore (wallets) for fury.
 
 ## Available Commands
 
 | Name                            | Description                                                                                      |
 | ------------------------------- | ------------------------------------------------------------------------------------------------ |
-| [add](#iris-keys-add)           | Add an encrypted private key (either newly generated or recovered), encrypt it, and save to disk |
-| [delete](#iris-keys-delete)     | Delete the given key                                                                             |
-| [export](#iris-keys-export)     | Export private keys                                                                              |
-| [import](#iris-keys-import)     | Import private keys into the local keybase                                                       |
-| [list](#iris-keys-list)         | List all keys                                                                                    |
-| [migrate](#iris-keys-migrate)   | Migrate keys from the legacy (db-based) Keybase                                                  |
-| [mnemonic](#iris-keys-mnemonic) | Compute the bip39 mnemonic for some input entropy                                                |
-| [parse](#iris-keys-parse)       | Parse address from hex to bech32 and vice versa                                                  |
-| [show](#iris-keys-show)         | Retrieve key information by name or address                                                      |
+| [add](#fury-keys-add)           | Add an encrypted private key (either newly generated or recovered), encrypt it, and save to disk |
+| [delete](#fury-keys-delete)     | Delete the given key                                                                             |
+| [export](#fury-keys-export)     | Export private keys                                                                              |
+| [import](#fury-keys-import)     | Import private keys into the local keybase                                                       |
+| [list](#fury-keys-list)         | List all keys                                                                                    |
+| [migrate](#fury-keys-migrate)   | Migrate keys from the legacy (db-based) Keybase                                                  |
+| [mnemonic](#fury-keys-mnemonic) | Compute the bip39 mnemonic for some input entropy                                                |
+| [parse](#fury-keys-parse)       | Parse address from hex to bech32 and vice versa                                                  |
+| [show](#fury-keys-show)         | Retrieve key information by name or address                                                      |
 
-## iris keys add
+## fury keys add
 
 Derive a new private key and encrypt to disk.
 
 ```bash
-iris keys add <key-name> [flags]
+fury keys add <key-name> [flags]
 ```
 
 **Flags:**
@@ -46,7 +46,7 @@ iris keys add <key-name> [flags]
 ### Create a new key
 
 ```bash
-iris keys add MyKey
+fury keys add MyKey
 ```
 
 Enter and repeat the password, at least 8 characters, then you will get a new key.
@@ -62,7 +62,7 @@ write the seed phrase in a safe place! It is the only way to recover your accoun
 If you forget your password or lose your key, or you wanna use your key in another place, you can recover your key by your seed phrase.
 
 ```bash
-iris keys add MyKey --recover
+fury keys add MyKey --recover
 ```
 
 You'll be asked to enter and repeat the new password for your key, and enter the seed phrase. Then you get your key back.
@@ -78,7 +78,7 @@ Enter your recovery seed phrase:
 The following example creates a multisig key with 3 sub-keys, and specify the minimum number of signatures as 2. The tx could be broadcast only when the number of signatures is greater than or equal to 2.
 
 ```bash
-iris keys add <multisig-keyname> --multisig-threshold=2 --multisig=<signer-keyname-1>,<signer-keyname-2>,<signer-keyname-3>
+fury keys add <multisig-keyname> --multisig-threshold=2 --multisig=<signer-keyname-1>,<signer-keyname-2>,<signer-keyname-3>
 ```
 
 :::tip
@@ -86,17 +86,17 @@ iris keys add <multisig-keyname> --multisig-threshold=2 --multisig=<signer-keyna
 
 If you don't have all the permission of sub-keys, you can ask for the pubkeys to create the offline keys first, then you will be able to create the multisig key.
 
-Offline key can be created by "iris keys add --pubkey".
+Offline key can be created by "fury keys add --pubkey".
 :::
 
-How to use multisig key to sign and broadcast a transaction,  please refer to [multisign](tx.md#iris-tx-multisign)
+How to use multisig key to sign and broadcast a transaction,  please refer to [multisign](tx.md#fury-tx-multisign)
 
-## iris keys delete
+## fury keys delete
 
 Delete a local key by the given name.
 
 ```bash
-iris keys delete <key-name> [flags]
+fury keys delete <key-name> [flags]
 ```
 
 **Flags:**
@@ -109,34 +109,34 @@ iris keys delete <key-name> [flags]
 ### Delete a local key
 
 ```bash
-iris keys delete MyKey
+fury keys delete MyKey
 ```
 
-## iris keys export
+## fury keys export
 
 Export the keystore of a key to a json file
 
 ```bash
-iris keys export <key-name> [flags]
+fury keys export <key-name> [flags]
 ```
 
 ### Export keystore
 
 ```bash
-iris keys export Mykey --output-file=<path-to-keystore>
+fury keys export Mykey --output-file=<path-to-keystore>
 ```
 
-## iris keys import
+## fury keys import
 
 Import a ASCII armored private key into the local keybase.
 
 ### Import a ASCII armored private key
 
 ```bash
-iris keys import <name> <keyfile> [flags]
+fury keys import <name> <keyfile> [flags]
 ```
 
-## iris keys list
+## fury keys list
 
 List all the keys stored by this key manager along with their associated name, type, address and pubkey.
 
@@ -149,10 +149,10 @@ List all the keys stored by this key manager along with their associated name, t
 ### List all keys
 
 ```bash
-iris keys list
+fury keys list
 ```
 
-## iris keys migrate
+## fury keys migrate
 
 Migrate key information from the legacy (db-based) Keybase to the new keyring-based Keybase.
 
@@ -165,15 +165,15 @@ Migrate key information from the legacy (db-based) Keybase to the new keyring-ba
 ### Migrate key information
 
 ```bash
-iris keys migrate [flags]
+fury keys migrate [flags]
 ```
 
-## iris keys mnemonic
+## fury keys mnemonic
 
 Create a bip39 mnemonic, sometimes called a seed phrase, by reading from the system entropy. To pass your own entropy, use `unsafe-entropy` mode.
 
 ```bash
-iris keys mnemonic [flags]
+fury keys mnemonic [flags]
 ```
 
 **Flags:**
@@ -185,7 +185,7 @@ iris keys mnemonic [flags]
 ### Create a bip39 mnemonic
 
 ```bash
-iris keys mnemonic
+fury keys mnemonic
 ```
 
 You'll get a bip39 mnemonic with 24 words, e.g.:
@@ -194,22 +194,22 @@ You'll get a bip39 mnemonic with 24 words, e.g.:
 beauty entire blue tape ordinary fix rotate learn smart tiger dolphin cycle cigar dish alcohol slab bachelor vital design consider paper panther mad eternal
 ```
 
-## iris keys parse
+## fury keys parse
 
 Convert and print to stdout key addresses and fingerprints from hexadecimal into bech32 cosmos prefixed format and vice versa.
 
 ### Convert and print to stdout key addresses and fingerprints
 
 ```bash
-iris keys parse <hex-or-bech32-address> [flags]
+fury keys parse <hex-or-bech32-address> [flags]
 ```
 
-## iris keys show
+## fury keys show
 
 Get details of a local key.
 
 ```bash
-iris keys show <key-name> [flags]
+fury keys show <key-name> [flags]
 ```
 
 **Flags:**
@@ -225,7 +225,7 @@ iris keys show <key-name> [flags]
 ### Get details of a local key
 
 ```bash
-iris keys show MyKey
+fury keys show MyKey
 ```
 
 The following infos will be shown:
@@ -245,7 +245,7 @@ The following infos will be shown:
 If an address has been bonded to be a validator operator (which the address you used to create a validator), then you can use `--bech val` to get the operator's address prefixed by `iva` and the pubkey prefixed by `ivp`:
 
 ```bash
-iris keys show MyKey --bech val
+fury keys show MyKey --bech val
 ```
 
 Example Output:

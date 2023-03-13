@@ -1,13 +1,13 @@
 # Contributing
 
-Thank you for considering making contributions to irishub!
+Thank you for considering making contributions to furyhub!
 
 Contributing to this repo can mean many things such as participated in
 discussion or proposing code changes. To ensure a smooth workflow for all
 contributors, the general procedure for contributing has been established:
 
-  1. either [open](https://github.com/irisnet/irishub/issues/new) or
-     [find](https://github.com/irisnet/irishub/issues) an issue you'd like to help with,
+  1. either [open](https://github.com/furynet/furyhub/issues/new) or
+     [find](https://github.com/furynet/furyhub/issues) an issue you'd like to help with,
   2. participate in thoughtful discussion on that issue,
   3. if you would then like to contribute code:
      1. if the issue is a proposal, ensure that the proposal has been accepted,

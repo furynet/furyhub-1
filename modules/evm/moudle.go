@@ -13,7 +13,7 @@ import (
 	"github.com/evmos/ethermint/x/evm/keeper"
 	"github.com/evmos/ethermint/x/evm/types"
 
-	iristypes "github.com/irisnet/irishub/types"
+	furytypes "github.com/furynet/furyhub/types"
 )
 
 var (
@@ -36,13 +36,13 @@ func NewAppModule(k *keeper.Keeper, ak types.AccountKeeper) AppModule {
 
 // BeginBlock returns the begin block for the evm module.
 func (am AppModule) BeginBlock(ctx sdk.Context, req abci.RequestBeginBlock) {
-	ethChainID := iristypes.BuildEthChainID(ctx.ChainID())
+	ethChainID := furytypes.BuildEthChainID(ctx.ChainID())
 	am.AppModule.BeginBlock(ctx.WithChainID(ethChainID), req)
 }
 
 // InitGenesis performs genesis initialization for the evm module. It returns
 // no validator updates.
 func (am AppModule) InitGenesis(ctx sdk.Context, cdc codec.JSONCodec, data json.RawMessage) []abci.ValidatorUpdate {
-	ethChainID := iristypes.BuildEthChainID(ctx.ChainID())
+	ethChainID := furytypes.BuildEthChainID(ctx.ChainID())
 	return am.AppModule.InitGenesis(ctx.WithChainID(ethChainID), cdc, data)
 }

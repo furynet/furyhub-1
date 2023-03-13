@@ -130,8 +130,8 @@ func (m *QuerySupersResponse) GetPagination() *query.PageResponse {
 }
 
 func init() {
-	proto.RegisterType((*QuerySupersRequest)(nil), "irishub.guardian.QuerySupersRequest")
-	proto.RegisterType((*QuerySupersResponse)(nil), "irishub.guardian.QuerySupersResponse")
+	proto.RegisterType((*QuerySupersRequest)(nil), "furyhub.guardian.QuerySupersRequest")
+	proto.RegisterType((*QuerySupersResponse)(nil), "furyhub.guardian.QuerySupersResponse")
 }
 
 func init() { proto.RegisterFile("guardian/query.proto", fileDescriptor_20cf24f8e5be2110) }
@@ -189,7 +189,7 @@ func NewQueryClient(cc grpc1.ClientConn) QueryClient {
 
 func (c *queryClient) Supers(ctx context.Context, in *QuerySupersRequest, opts ...grpc.CallOption) (*QuerySupersResponse, error) {
 	out := new(QuerySupersResponse)
-	err := c.cc.Invoke(ctx, "/irishub.guardian.Query/Supers", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/furyhub.guardian.Query/Supers", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -224,7 +224,7 @@ func _Query_Supers_Handler(srv interface{}, ctx context.Context, dec func(interf
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/irishub.guardian.Query/Supers",
+		FullMethod: "/furyhub.guardian.Query/Supers",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(QueryServer).Supers(ctx, req.(*QuerySupersRequest))
@@ -233,7 +233,7 @@ func _Query_Supers_Handler(srv interface{}, ctx context.Context, dec func(interf
 }
 
 var _Query_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "irishub.guardian.Query",
+	ServiceName: "furyhub.guardian.Query",
 	HandlerType: (*QueryServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

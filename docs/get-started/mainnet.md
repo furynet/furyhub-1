@@ -5,7 +5,7 @@ order: 3
 # Join The Mainnet
 
 :::tip
-**Requirements:** [install iris](install.md)
+**Requirements:** [install fury](install.md)
 :::
 
 ## Run a Full Node
@@ -13,48 +13,48 @@ order: 3
 ### Start node from genesis
 
 :::tip
-**We recommend running a full node via state sync** (see the next subsection). But if you want to start from genesis, you must use irishub [v1.0.1](https://github.com/irisnet/irishub/releases/tag/v1.0.1) to initialize your node.
+**We recommend running a full node via state sync** (see the next subsection). But if you want to start from genesis, you must use furyhub [v1.0.1](https://github.com/furynet/furyhub/releases/tag/v1.0.1) to initialize your node.
 :::
 
 ```bash
 # initialize node configurations
-iris init <moniker> --chain-id=irishub-1
+fury init <moniker> --chain-id=furyhub-1
 
 # download mainnet public config.toml and genesis.json
-curl -o ~/.iris/config/config.toml https://raw.githubusercontent.com/irisnet/mainnet/master/config/config.toml
-curl -o ~/.iris/config/genesis.json https://raw.githubusercontent.com/irisnet/mainnet/master/config/genesis.json
+curl -o ~/.fury/config/config.toml https://raw.githubusercontent.com/furynet/mainnet/master/config/config.toml
+curl -o ~/.fury/config/genesis.json https://raw.githubusercontent.com/furynet/mainnet/master/config/genesis.json
 
 # start the node (you can also use "nohup" or "systemd" to run in the background)
-iris start
+fury start
 ```
 
 Next, your node will process all chain upgrades. Between each upgrade, you must use the specified version to catch up with the block. Don't worry about using the old version at the upgrade height, the node will be halted automatically.
 
-| Proposal | Start height | Upgrade height | irishub version |
+| Proposal | Start height | Upgrade height | furyhub version |
 | -------- | ------------ | -------------- | ----- |
-| genesis  |  9146456     |  9593205  | [v1.0.1](https://github.com/irisnet/irishub/releases/tag/v1.0.1) |
-| [#1](https://irishub.iobscan.io/#/ProposalsDetail/1)  |  9593206     |    | [v1.1.0](https://github.com/irisnet/irishub/releases/tag/v1.1.0), [v1.1.1](https://github.com/irisnet/irishub/releases/tag/v1.1.1)|
-| [#8](https://irishub.iobscan.io/#/ProposalsDetail/8)  |  12393048     | 12534300 | [v1.2.0](https://github.com/irisnet/irishub/releases/tag/v1.2.0), [v1.2.1](https://github.com/irisnet/irishub/releases/tag/v1.2.1) |
-| [#11](https://irishub.iobscan.io/#/ProposalsDetail/11)  |  14166918     |  14301916  | [v1.3.0](https://github.com/irisnet/irishub/releases/tag/v1.3.0) |
-| [#19](https://irishub.iobscan.io/#/gov/proposals/19)  |       |  17685953  | [v1.4.1](https://github.com/irisnet/irishub/releases/tag/v1.4.1) |
+| genesis  |  9146456     |  9593205  | [v1.0.1](https://github.com/furynet/furyhub/releases/tag/v1.0.1) |
+| [#1](https://furyhub.iobscan.io/#/ProposalsDetail/1)  |  9593206     |    | [v1.1.0](https://github.com/furynet/furyhub/releases/tag/v1.1.0), [v1.1.1](https://github.com/furynet/furyhub/releases/tag/v1.1.1)|
+| [#8](https://furyhub.iobscan.io/#/ProposalsDetail/8)  |  12393048     | 12534300 | [v1.2.0](https://github.com/furynet/furyhub/releases/tag/v1.2.0), [v1.2.1](https://github.com/furynet/furyhub/releases/tag/v1.2.1) |
+| [#11](https://furyhub.iobscan.io/#/ProposalsDetail/11)  |  14166918     |  14301916  | [v1.3.0](https://github.com/furynet/furyhub/releases/tag/v1.3.0) |
+| [#19](https://furyhub.iobscan.io/#/gov/proposals/19)  |       |  17685953  | [v1.4.1](https://github.com/furynet/furyhub/releases/tag/v1.4.1) |
 
 :::tip
 You may see some connection errors, it does not matter, the P2P network is trying to find available connections
 
-Try to add some of the [Community Peers](https://github.com/irisnet/mainnet/blob/master/config/community-peers.md) to `persistent_peers` in the config.toml
+Try to add some of the [Community Peers](https://github.com/furynet/mainnet/blob/master/config/community-peers.md) to `persistent_peers` in the config.toml
 
-If you want to quickly start the node and join IRIS Hub without historical data, you can consider using the [state_sync](./state-sync.md) function.
+If you want to quickly start the node and join FURY Hub without historical data, you can consider using the [state_sync](./state-sync.md) function.
 :::
 
 ### Quick Start via State Sync
 
 To quickly get started, node operators can choose to sync via State Sync. State Sync works by replaying larger chunks of application state directly rather than replaying individual blocks or consensus rounds.
 
-The newest state sync configs can be found [here](https://ping.pub/iris/statesync). **Please remember to modify state sync configs.**
+The newest state sync configs can be found [here](https://ping.pub/fury/statesync). **Please remember to modify state sync configs.**
 
 ```bash
-# Build iris binary and initialize chain
-iris init <moniker> --chain-id=irishub-1
+# Build fury binary and initialize chain
+fury init <moniker> --chain-id=furyhub-1
 
 # Configure State sync
 [statesync]
@@ -64,19 +64,19 @@ trust_height = 17613000
 trust_hash = "990f1eaf06d456bc22891327e006d520cb407f8ad3bfee1edd43df0de1e1da1c"
 trust_period = "168h"  # 2/3 of unbonding time
 
-#Start Iris
-iris start --x-crisis-skip-assert-invariants
+#Start Fury
+fury start --x-crisis-skip-assert-invariants
 ```
 
 ## Upgrade to Validator Node
 
 ### Create a Wallet
 
-You can [create a new wallet](../cli-client/keys.md#create-a-new-key) or [import an existing one](../cli-client/keys.md#recover-an-existing-key-from-seed-phrase), then get some IRIS from the exchanges or anywhere else into the wallet you just created, .e.g.
+You can [create a new wallet](../cli-client/keys.md#create-a-new-key) or [import an existing one](../cli-client/keys.md#recover-an-existing-key-from-seed-phrase), then get some FURY from the exchanges or anywhere else into the wallet you just created, .e.g.
 
 ```bash
 # create a new wallet
-iris keys add <key-name>
+fury keys add <key-name>
 ```
 
 :::warning
@@ -92,7 +92,7 @@ write the seed phrase in a safe place! It is the only way to recover your accoun
 # apt-get update && apt-get install -y jq
 
 # if the output is false, means your node has caught-up
-iris status | jq .sync_info.catching_up
+fury status | jq .sync_info.catching_up
 ```
 
 ### Create Validator
@@ -100,24 +100,24 @@ iris status | jq .sync_info.catching_up
 Only if your node has caught-up, you can run the following command to upgrade your node to be a validator.
 
 ```bash
-iris tx staking create-validator \
-    --pubkey=$(iris tendermint show-validator) \
+fury tx staking create-validator \
+    --pubkey=$(fury tendermint show-validator) \
     --moniker=<your-validator-name> \
-    --amount=<amount-to-be-delegated, e.g. 10000iris> \
+    --amount=<amount-to-be-delegated, e.g. 10000fury> \
     --min-self-delegation=1 \
     --commission-max-change-rate=0.1 \
     --commission-max-rate=0.1 \
     --commission-rate=0.1 \
     --gas=100000 \
-    --fees=0.6iris \
-    --chain-id=irishub-1 \
+    --fees=0.6fury \
+    --chain-id=furyhub-1 \
     --from=<key-name>
 ```
 
 :::warning
 **Important**
 
-Backup the `config` directory located in your iris home (default ~/.iris/) carefully! It is the only way to recover your validator.
+Backup the `config` directory located in your fury home (default ~/.fury/) carefully! It is the only way to recover your validator.
 :::
 
 If there are no errors, then your node is now a validator or candidate (depending on whether your delegation amount is in the top 100)
@@ -133,6 +133,6 @@ Read more:
 
 ## Faucet
 
-Request IRISnet mainnet tokens from the Faucet powered by Stakely.
+Request FURYnet mainnet tokens from the Faucet powered by Stakely.
 
-For the usage, please refer to the guideline on the Faucet page: https://stakely.io/faucet/irisnet-iris
+For the usage, please refer to the guideline on the Faucet page: https://stakely.io/faucet/furynet-fury

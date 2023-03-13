@@ -10,7 +10,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/version"
 	"github.com/spf13/cobra"
 
-	"github.com/irisnet/irishub/modules/guardian/types"
+	"github.com/furynet/furyhub/modules/guardian/types"
 )
 
 // NewTxCmd returns the transaction commands for the guardian module.
@@ -35,7 +35,7 @@ func GetCmdCreateSuper() *cobra.Command {
 		Use:   "add-super",
 		Short: "Add a new super",
 		Example: fmt.Sprintf(
-			"%s tx guardian add-super --chain-id=<chain-id> --from=<key-name> --fees=0.3iris --address=<added address> --description=<name>",
+			"%s tx guardian add-super --chain-id=<chain-id> --from=<key-name> --fees=0.3fury --address=<added address> --description=<name>",
 			version.AppName,
 		),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -76,7 +76,7 @@ func GetCmdDeleteSuper() *cobra.Command {
 		Use:   "delete-super",
 		Short: "Delete a super",
 		Example: fmt.Sprintf(
-			"%s tx guardian delete-super --chain-id=<chain-id> --from=<key-name> --fees=0.3iris --address=<deleted address>",
+			"%s tx guardian delete-super --chain-id=<chain-id> --from=<key-name> --fees=0.3fury --address=<deleted address>",
 			version.AppName,
 		),
 		RunE: func(cmd *cobra.Command, args []string) error {

@@ -53,7 +53,7 @@ import (
 	srvflags "github.com/evmos/ethermint/server/flags"
 	ethermint "github.com/evmos/ethermint/types"
 
-	iristypes "github.com/irisnet/irishub/types"
+	furytypes "github.com/furynet/furyhub/types"
 )
 
 // StartCmd runs the service passed in, either stand-alone or in-process with
@@ -529,7 +529,7 @@ func startInProcess(ctx *server.Context, clientCtx client.Context, appCreator ty
 			return err
 		}
 
-		chainID := iristypes.BuildEthChainID(genDoc.ChainID)
+		chainID := furytypes.BuildEthChainID(genDoc.ChainID)
 		clientCtx := clientCtx.WithChainID(chainID)
 
 		tmEndpoint := "/websocket"

@@ -4,19 +4,19 @@ order: 3
 
 # gRPC Gateway JSON REST
 
-In irishub v1.0.0, the node continues to serve a REST server. However, the existing routes present in version v0.16.3 and earlier are now marked as deprecated, and new routes have been added via gRPC-gateway.
+In furyhub v1.0.0, the node continues to serve a REST server. However, the existing routes present in version v0.16.3 and earlier are now marked as deprecated, and new routes have been added via gRPC-gateway.
 
 ## API Port, Activation and Configuration
 
-All routes are configured under the following fields in `~/.iris/config/app.toml`:
+All routes are configured under the following fields in `~/.fury/config/app.toml`:
 
 - `api.enable = true|false` field defines if the REST server should be enabled. Defaults to `true`.
 - `api.address = {string}` field defines the address (really, the port, since the host should be kept at `0.0.0.0`) the server should bind to. Defaults to `tcp://0.0.0.0:1317`.
-- some additional API configuration options are defined in `~/.iris/config/app.toml`, along with comments, please refer to that file directly.
+- some additional API configuration options are defined in `~/.fury/config/app.toml`, along with comments, please refer to that file directly.
 
 ### gRPC-gateway REST Routes
 
-If, for various reasons, you cannot use gRPC (for example, you are building a web application, and browsers don't support HTTP2 on which gRPC is built), then the IRIShub offers REST routes via gRPC-gateway.
+If, for various reasons, you cannot use gRPC (for example, you are building a web application, and browsers don't support HTTP2 on which gRPC is built), then the FURYhub offers REST routes via gRPC-gateway.
 
 [gRPC-gateway](https://grpc-ecosystem.github.io/grpc-gateway/) is a tool to expose gRPC endpoints as REST endpoints. For each RPC endpoint defined in a Protobuf service, the SDK offers a REST equivalent. For instance, querying token list could be done via the `/irismod.token.Query/Tokens` gRPC endpoint, or alternatively via the gRPC-gateway `/irismod/token/tokens` REST endpoint: both will return the same result. For each RPC method defined in a Protobuf service, the corresponding REST endpoint is defined as an option:
 
@@ -28,13 +28,13 @@ For application developers, gRPC-gateway REST routes needs to be wired up to the
 
 A [Swagger](https://swagger.io/) (or OpenAPIv2) specification file is exposed under the `/swagger` route on the API server. Swagger is an open specification describing the API endpoints a server serves, including description, input arguments, return types and much more about each endpoint.
 
-Enabling the `/swagger` endpoint is configurable inside `~/.iris/config/app.toml` via the `api.swagger` field, which is set to true by default.
+Enabling the `/swagger` endpoint is configurable inside `~/.fury/config/app.toml` via the `api.swagger` field, which is set to true by default.
 
-For application developers, you may want to generate your own Swagger definitions based on your custom modules. The IRIShub's [Swagger generation script](https://github.com/irisnet/irishub/blob/master/scripts/protoc-swagger-gen.sh) is a good place to start.
+For application developers, you may want to generate your own Swagger definitions based on your custom modules. The FURYhub's [Swagger generation script](https://github.com/furynet/furyhub/blob/master/scripts/protoc-swagger-gen.sh) is a good place to start.
 
 ## API Endpoints
 
-**IRIShub API Endpoints**
+**FURYhub API Endpoints**
 
 | API Endpoints                                                                                                                               | Description                                                                                      | Legacy REST Endpoint                                                              |
 | :------------------------------------------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------- |
@@ -145,8 +145,8 @@ For application developers, you may want to generate your own Swagger definition
 | `GET` `/irismod/random/queue`                                                                                                               | Query the random request queue                                                                   |                                                                                   |
 | `GET` `/irismod/random/randoms/{req_id}`                                                                                                    | Query the random result                                                                          |                                                                                   |
 | `GET` `/irismod/record/records/{record_id}`                                                                                                 | Query the record by the given record ID                                                          |                                                                                   |
-| `GET` `/irishub/mint/params`                                                                                                                | Query the mint parameters                                                                        |                                                                                   |
-| `GET` `/irishub/guardian/supers`                                                                                                            | Return all Supers                                                                                |                                                                                   |
+| `GET` `/furyhub/mint/params`                                                                                                                | Query the mint parameters                                                                        |                                                                                   |
+| `GET` `/furyhub/guardian/supers`                                                                                                            | Return all Supers                                                                                |                                                                                   |
 
 **Tendermint API Endpoints**
 

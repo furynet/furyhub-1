@@ -1,10 +1,10 @@
 syntax = "proto3";
-package irishub.mint;
+package furyhub.mint;
 
 import "mint/mint.proto";
 import "gogoproto/gogo.proto";
 
-option go_package = "github.com/irisnet/irishub/modules/mint/types";
+option go_package = "github.com/furynet/furyhub/modules/mint/types";
 
 // GenesisState defines the mint module's genesis state
 message GenesisState {

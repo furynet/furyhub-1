@@ -1,44 +1,44 @@
 # Service
 
-Service module allows you to define, bind, invoke services on the IRIS Hub. [Read more about iService](../features/service.md).
+Service module allows you to define, bind, invoke services on the FURY Hub. [Read more about iService](../features/service.md).
 
 ## 可用命令
 
 | Name                                                    | Description                                                        |
 | ------------------------------------------------------- | ------------------------------------------------------------------ |
-| [define](#iris-tx-service-define)                       | Define a new service                                               |
-| [definition](#iris-query-service-definition)            | Query a service definition                                         |
-| [bind](#iris-tx-service-bind)                           | Bind a service                                                     |
-| [binding](#iris-query-service-binding)                  | Query a service binding                                            |
-| [bindings](#iris-query-service-bindings)                | Query all bindings of a service definition                         |
-| [set-withdraw-addr](#iris-tx-service-set-withdraw-addr) | Set a withdrawal address for a provider                            |
-| [withdraw-addr](#iris-query-service-withdraw-addr)      | Query the withdrawal address of a provider                         |
-| [update-binding](#iris-tx-service-update-binding)       | Update an existing service binding                                 |
-| [disable](#iris-tx-service-disable)                     | Disable an available service binding                               |
-| [enable](#iris-tx-service-enable)                       | Enable an unavailable service binding                              |
-| [refund-deposit](#iris-tx-service-refund-deposit)       | Refund all deposit from a service binding                          |
-| [call](#iris-tx-service-call)                           | Initiate a service call                                            |
-| [request](#iris-query-service-request)                  | Query a request by the request ID                                  |
-| [requests](#iris-query-service-requests)                | Query active requests by the service binding or request context ID |
-| [respond](#iris-tx-service-respond)                     | Respond to a service request                                       |
-| [response](#iris-query-service-response)                | Query a response by the request ID                                 |
-| [responses](#iris-query-service-responses)              | Query active responses by the request context ID and batch counter |
-| [request-context](#iris-query-service-request-context)  | Query a request context                                            |
-| [update](#iris-tx-service-update)                       | Update a request context                                           |
-| [pause](#iris-tx-service-pause)                         | Pause a running request context                                    |
-| [start](#iris-tx-service-start)                         | Start a paused request context                                     |
-| [kill](#iris-tx-service-kill)                           | Terminate a request context                                        |
-| [fees](#iris-query-service-fees)                        | Query the earned fees of a provider                                |
-| [withdraw-fees](#iris-tx-service-withdraw-fees)         | Withdraw the earned fees of a provider                             |
-| [schema](#iris-query-service-schema)                    | Query the system schema by the schema name                         |
-| [params](#iris-query-service-params)                    | Query values set as service parameters.                            |
+| [define](#fury-tx-service-define)                       | Define a new service                                               |
+| [definition](#fury-query-service-definition)            | Query a service definition                                         |
+| [bind](#fury-tx-service-bind)                           | Bind a service                                                     |
+| [binding](#fury-query-service-binding)                  | Query a service binding                                            |
+| [bindings](#fury-query-service-bindings)                | Query all bindings of a service definition                         |
+| [set-withdraw-addr](#fury-tx-service-set-withdraw-addr) | Set a withdrawal address for a provider                            |
+| [withdraw-addr](#fury-query-service-withdraw-addr)      | Query the withdrawal address of a provider                         |
+| [update-binding](#fury-tx-service-update-binding)       | Update an existing service binding                                 |
+| [disable](#fury-tx-service-disable)                     | Disable an available service binding                               |
+| [enable](#fury-tx-service-enable)                       | Enable an unavailable service binding                              |
+| [refund-deposit](#fury-tx-service-refund-deposit)       | Refund all deposit from a service binding                          |
+| [call](#fury-tx-service-call)                           | Initiate a service call                                            |
+| [request](#fury-query-service-request)                  | Query a request by the request ID                                  |
+| [requests](#fury-query-service-requests)                | Query active requests by the service binding or request context ID |
+| [respond](#fury-tx-service-respond)                     | Respond to a service request                                       |
+| [response](#fury-query-service-response)                | Query a response by the request ID                                 |
+| [responses](#fury-query-service-responses)              | Query active responses by the request context ID and batch counter |
+| [request-context](#fury-query-service-request-context)  | Query a request context                                            |
+| [update](#fury-tx-service-update)                       | Update a request context                                           |
+| [pause](#fury-tx-service-pause)                         | Pause a running request context                                    |
+| [start](#fury-tx-service-start)                         | Start a paused request context                                     |
+| [kill](#fury-tx-service-kill)                           | Terminate a request context                                        |
+| [fees](#fury-query-service-fees)                        | Query the earned fees of a provider                                |
+| [withdraw-fees](#fury-tx-service-withdraw-fees)         | Withdraw the earned fees of a provider                             |
+| [schema](#fury-query-service-schema)                    | Query the system schema by the schema name                         |
+| [params](#fury-query-service-params)                    | Query values set as service parameters.                            |
 
-## iris tx service define
+## fury tx service define
 
 Define a new service.
 
 ```bash
-iris tx service define [flags]
+fury tx service define [flags]
 ```
 
 **Flags:**
@@ -54,15 +54,15 @@ iris tx service define [flags]
 ### define a service
 
 ```bash
-iris tx service define \
+fury tx service define \
     --name=<service name> \
     --description=<service description> \
     --author-description=<author description>
     --tags=tag1,tag2 \
     --schemas=<schemas content or path/to/schemas.json> \
-    --chain-id=irishub \
+    --chain-id=furyhub \
     --from=<key-name> \
-    --fees=0.3iris
+    --fees=0.3fury
 ```
 
 ### Schemas content example
@@ -111,12 +111,12 @@ iris tx service define \
 }
 ```
 
-## iris query service definition
+## fury query service definition
 
 Query a service definition.
 
 ```bash
-iris query service definition [service-name] [flags]
+fury query service definition [service-name] [flags]
 ```
 
 ### Query a service definition
@@ -124,15 +124,15 @@ iris query service definition [service-name] [flags]
 Query the detailed info of the service definition with the specified service name.
 
 ```bash
-iris query service definition <service name>
+fury query service definition <service name>
 ```
 
-## iris tx service bind
+## fury tx service bind
 
 Bind a service.
 
 ```bash
-iris tx service bind [flags]
+fury tx service bind [flags]
 ```
 
 **Flags:**
@@ -141,7 +141,7 @@ iris tx service bind [flags]
 | --------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------- | -------- |
 | --service-name  |         | Service name                                                                                                                  | Yes      |
 | --deposit       |         | Deposit of the binding                                                                                                        | Yes      |
-| --pricing       |         | Pricing content or file path, which is an instance of [Irishub Service Pricing JSON Schema](../features/service-pricing.json) | Yes      |
+| --pricing       |         | Pricing content or file path, which is an instance of [Furyhub Service Pricing JSON Schema](../features/service-pricing.json) | Yes      |
 | --qos           |         | Minimum response time                                                                                                         | Yes      |
 | --options       |         | Non-functional requirements options                                                                                           | Yes      |
 | --provider      |         | Provider address, default to the owner                                                                                        |          |
@@ -151,53 +151,53 @@ iris tx service bind [flags]
 The deposit needs to satisfy the minimum deposit requirement, which is the maximal one between `price` * `MinDepositMultiple` and `MinDeposit` (`MinDepositMultiple` and `MinDeposit` are the system parameters, which can be modified through the governance).
 
 ```bash
-iris tx service bind \
+fury tx service bind \
     --service-name=<service name> \
-    --deposit=10000iris \
+    --deposit=10000fury \
     --pricing=<pricing content or path/to/pricing.json> \
     --qos=50 \
     --options=<non-functional requirements options content or path/to/options.json> \
-    --chain-id=irishub \
+    --chain-id=furyhub \
     --from=<key-name> \
-    --fees=0.3iris
+    --fees=0.3fury
 ```
 
 ### Pricing content example
 
 ```json
 {
-    "price": "1iris"
+    "price": "1fury"
 }
 ```
 
-## iris query service binding
+## fury query service binding
 
 Query a service binding.
 
 ```bash
-iris query service binding <service name> <provider>
+fury query service binding <service name> <provider>
 ```
 
-## iris query service bindings
+## fury query service bindings
 
 Query all bindings of a service definition.
 
 ```bash
-iris query service bindings [service-name] [flags]
+fury query service bindings [service-name] [flags]
 ```
 
 ### Query service binding list
 
 ```bash
-iris query service bindings <service name> <owner address>
+fury query service bindings <service name> <owner address>
 ```
 
-## iris tx service update-binding
+## fury tx service update-binding
 
 Update a service binding.
 
 ```bash
-iris tx service update-binding [service-name] [provider-address] [flags]
+fury tx service update-binding [service-name] [provider-address] [flags]
 ```
 
 **Flags:**
@@ -205,55 +205,55 @@ iris tx service update-binding [service-name] [provider-address] [flags]
 | Name, shorthand | Default | Description                                                                                                                                       | Required |
 | --------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | --deposit       |         | Deposit added for the binding, not updated if empty                                                                                               |          |
-| --pricing       |         | Pricing content or file path, which is an instance of [Irishub Service Pricing JSON Schema](../features/service-pricing.md), not updated if empty |          |
+| --pricing       |         | Pricing content or file path, which is an instance of [Furyhub Service Pricing JSON Schema](../features/service-pricing.md), not updated if empty |          |
 | --qos           |         | Minimum response time, not updated if set to 0                                                                                                    |          |
 | --options       |         | Non-functional requirements options                                                                                                               |          |
 
 ### Update an existing service binding
 
-The following example updates the service binding with the additional 10 IRIS deposit
+The following example updates the service binding with the additional 10 FURY deposit
 
 ```bash
-iris tx service update-binding <service-name> <provider-address> \
-    --deposit=10iris \
+fury tx service update-binding <service-name> <provider-address> \
+    --deposit=10fury \
     --options=<non-functional requirements options content or path/to/options.json> \
-    --pricing='{"price":"1iris"}' \
+    --pricing='{"price":"1fury"}' \
     --qos=50 \
     --chain-id=<chain-id> \
     --from=<key name> \
-    --fees=0.3iris
+    --fees=0.3fury
 ```
 
-## iris tx service set-withdraw-addr
+## fury tx service set-withdraw-addr
 
 Set a withdrawal address for a provider.
 
 ```bash
-iris tx service set-withdraw-addr [withdrawal-address] [flags]
+fury tx service set-withdraw-addr [withdrawal-address] [flags]
 ```
 
-## iris query service withdraw-addr
+## fury query service withdraw-addr
 
 Query the withdrawal address of a provider.
 
 ```bash
-iris query service withdraw-addr [provider] [flags]
+fury query service withdraw-addr [provider] [flags]
 ```
 
-## iris tx service disable
+## fury tx service disable
 
 Disable an available service binding.
 
 ```bash
-iris tx service disable [service-name] [provider-address] [flags]
+fury tx service disable [service-name] [provider-address] [flags]
 ```
 
-## iris tx service enable
+## fury tx service enable
 
 Enable an unavailable service binding.
 
 ```bash
-iris tx service enable [service-name] [provider-address] [flags]
+fury tx service enable [service-name] [provider-address] [flags]
 ```
 
 **Flags:**
@@ -264,34 +264,34 @@ iris tx service enable [service-name] [provider-address] [flags]
 
 ### Enable an unavailable service binding
 
-The following example enables an unavailable service binding with the additional 10 IRIS deposit.
+The following example enables an unavailable service binding with the additional 10 FURY deposit.
 
 ```bash
-iris tx service enable <service name> <provider-address> --chain-id=irishub --from=<key-name> --fees=0.3iris --deposit=10iris
+fury tx service enable <service name> <provider-address> --chain-id=furyhub --from=<key-name> --fees=0.3fury --deposit=10fury
 ```
 
-## iris tx service refund-deposit
+## fury tx service refund-deposit
 
 Refund all deposits from a service binding.
 
 ```bash
-iris tx service refund-deposit [service-name] [provider-address] [flags]
+fury tx service refund-deposit [service-name] [provider-address] [flags]
 ```
 
 ### Refund all deposits from an unavailable service binding
 
-Before refunding, you should [disable](#iris-tx-service-disable) the service binding first.
+Before refunding, you should [disable](#fury-tx-service-disable) the service binding first.
 
 ```bash
-iris tx service refund-deposit <service name> <provider-address> --chain-id=irishub --from=<key-name> --fees=0.3iris
+fury tx service refund-deposit <service name> <provider-address> --chain-id=furyhub --from=<key-name> --fees=0.3fury
 ```
 
-## iris tx service call
+## fury tx service call
 
 Initiate a service call.
 
 ```bash
-iris tx service call [flags]
+fury tx service call [flags]
 ```
 
 **Flags:**
@@ -303,25 +303,25 @@ iris tx service call [flags]
 | --service-fee-cap |         | Maximum service fee to pay for a single request                                                                        | Yes      |
 | --data            |         | Content or file path of the request input, which is an Input JSON Schema instance                                      | Yes      |
 | --timeout         |         | Request timeout                                                                                                        | Yes      |
-| --repeated        | false   | Indicate if the reqeust is repetitive (Temporarily disabled in irishub-v1.0.0, will be activated after a few versions) |          |
+| --repeated        | false   | Indicate if the reqeust is repetitive (Temporarily disabled in furyhub-v1.0.0, will be activated after a few versions) |          |
 | --frequency       |         | Request frequency when repeated, default to `timeout`                                                                  |          |
 | --total           |         | Request count when repeated, -1 means unlimited                                                                        |          |
 
 ### Initiate a service invocation request
 
 ```bash
-iris tx service call \
+fury tx service call \
     --service-name=<service name> \
     --providers=<provider list> \
-    --service-fee-cap=1iris \
+    --service-fee-cap=1fury \
     --data=<request input or path/to/input.json> \
     --timeout=100 \
     --repeated \
     --frequency=150 \
     --total=100 \
-    --chain-id=irishub \
+    --chain-id=furyhub \
     --from=<key name> \
-    --fees=0.3iris
+    --fees=0.3fury
 ```
 
 ### Input example
@@ -333,28 +333,28 @@ iris tx service call \
     },
     "body": {
         "id": "1",
-        "name": "irisnet",
+        "name": "furynet",
         "data": "facedata"
     }
 }
 ```
 
-## iris query service request
+## fury query service request
 
 Query a request by the request ID.
 
 ```bash
-iris query service request [request-id] [flags]
+fury query service request [request-id] [flags]
 ```
 
 ### Query a service request
 
 ```bash
-iris query service request <request-id>
+fury query service request <request-id>
 ```
 
 :::tip
-You can retrieve the `request-id` in [Query request_id through rpc interface](#Query request_id through rpc interface) or [iris query service requests](#iris query service requests).
+You can retrieve the `request-id` in [Query request_id through rpc interface](#Query request_id through rpc interface) or [fury query service requests](#fury query service requests).
 :::
 
 ### Query request_id through rpc interface
@@ -365,32 +365,32 @@ Query `block_results` according to `block height` through `rpc interface`, find 
 curl -X POST -d '{"jsonrpc":"2.0","id":1,"method":"block_results","params":["10604"]}' http://localhost:26657
 ```
 
-## iris query service requests
+## fury query service requests
 
 Query active requests by the service binding or request context ID.
 
 ```bash
-iris query service requests [service-name] [provider] | [request-context-id] [batch-counter] [flags]
+fury query service requests [service-name] [provider] | [request-context-id] [batch-counter] [flags]
 ```
 
 ### Query active requests of a service binding
 
 ```bash
-iris query service requests <service name> <provider>
+fury query service requests <service name> <provider>
 ```
 
 ### Query service requests by the request context ID and batch counter
 
 ```bash
-iris query service requests <request-context-id> <batch-counter>
+fury query service requests <request-context-id> <batch-counter>
 ```
 
-## iris tx service respond
+## fury tx service respond
 
 Respond to a service request.
 
 ```bash
-iris tx service respond [flags]
+fury tx service respond [flags]
 ```
 
 **Flags:**
@@ -398,23 +398,23 @@ iris tx service respond [flags]
 | Name, shorthand | Default | Description                                                                                                                                | Required |
 | --------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
 | --request-id    |         | ID of the request to respond to                                                                                                            | Yes      |
-| --result        |         | Content or file path of the response result, which is an instance of [Irishub Service Result JSON Schema](../features/service-result.json) | Yes      |
+| --result        |         | Content or file path of the response result, which is an instance of [Furyhub Service Result JSON Schema](../features/service-result.json) | Yes      |
 | --data          |         | Content or file path of the response output, which is an Output JSON Schema instance                                                       |          |
 
 ### Respond to a service request
 
 ```bash
-iris tx service respond \
+fury tx service respond \
     --request-id=<request-id> \
     --result=<response result or path/to/result.json> \
     --data=<response output or path/to/output.json>
-    --chain-id=irishub \
+    --chain-id=furyhub \
     --from=<key-name> \
-    --fees=0.3iris
+    --fees=0.3fury
 ```
 
 :::tip
-You can retrieve the `request-id` in [Query request_id through rpc interface](#Query request_id through rpc interface) or [iris query service requests](#iris query service requests).
+You can retrieve the `request-id` in [Query request_id through rpc interface](#Query request_id through rpc interface) or [fury query service requests](#fury query service requests).
 :::
 
 ### Result example
@@ -439,56 +439,56 @@ You can retrieve the `request-id` in [Query request_id through rpc interface](#Q
 }
 ```
 
-## iris query service response
+## fury query service response
 
 Query a service response.
 
 ```bash
-iris query service response [request-id] [flags]
+fury query service response [request-id] [flags]
 ```
 
 :::tip
-You can retrieve the `request-id` in [Query request_id through rpc interface](#Query request_id through rpc interface) or [iris query service requests](#iris query service requests).
+You can retrieve the `request-id` in [Query request_id through rpc interface](#Query request_id through rpc interface) or [fury query service requests](#fury query service requests).
 :::
 
-## iris query service responses
+## fury query service responses
 
 Query active responses by the request context ID and batch counter.
 
 ```bash
-iris query service responses [request-context-id] [batch-counter] [flags]
+fury query service responses [request-context-id] [batch-counter] [flags]
 ```
 
 ### Query responses by the request context ID and batch counter
 
 ```bash
-iris query service responses <request-context-id> <batch-counter>
+fury query service responses <request-context-id> <batch-counter>
 ```
 
-## iris query service request-context
+## fury query service request-context
 
 Query a request context.
 
 ```bash
-iris query service request-context [request-context-id] [flags]
+fury query service request-context [request-context-id] [flags]
 ```
 
 ### Query a request context
 
 ```bash
-iris query service request-context <request-context-id>
+fury query service request-context <request-context-id>
 ```
 
 :::tip
-You can retrieve the `request-context-id` in the result of [service call](#iris-tx-service-call)
+You can retrieve the `request-context-id` in the result of [service call](#fury-tx-service-call)
 :::
 
-## iris tx service update
+## fury tx service update
 
 Update a request context.
 
 ```bash
-iris tx service update [request-context-id] [flags]
+fury tx service update [request-context-id] [flags]
 ```
 
 **Flags:**
@@ -504,99 +504,99 @@ iris tx service update [request-context-id] [flags]
 ### Update a request context
 
 ```bash
-iris tx service update <request-context-id> \
+fury tx service update <request-context-id> \
     --providers=<provider list> \
-    --service-fee-cap=1iris \
+    --service-fee-cap=1fury \
     --timeout=0 \
     --frequency=150 \
     --total=100 \
-    --chain-id=irishub \
+    --chain-id=furyhub \
     --from=<key name> \
-    --fees=0.3iris
+    --fees=0.3fury
 ```
 
-## iris tx service pause
+## fury tx service pause
 
 Pause a running request context.
 
 ```bash
-iris tx service pause [request-context-id] [flags]
+fury tx service pause [request-context-id] [flags]
 ```
 
 ### Pause a running request context
 
 ```bash
-iris tx service pause <request-context-id>
+fury tx service pause <request-context-id>
 ```
 
-## iris tx service start
+## fury tx service start
 
 Start a paused request context.
 
 ```bash
-iris tx service start [request-context-id] [flags]
+fury tx service start [request-context-id] [flags]
 ```
 
 ### Start a paused request context
 
 ```bash
-iris tx service start <request-context-id>
+fury tx service start <request-context-id>
 ```
 
-## iris tx service kill
+## fury tx service kill
 
 Terminate a request context.
 
 ```bash
-iris tx service kill [request-context-id] [flags]
+fury tx service kill [request-context-id] [flags]
 ```
 
 ### Kill a request context
 
 ```bash
-iris tx service kill <request-context-id>
+fury tx service kill <request-context-id>
 ```
 
-## iris query service fees
+## fury query service fees
 
 Query the earned fees of a provider.
 
 ```bash
-iris query service fees [provider] [flags]
+fury query service fees [provider] [flags]
 ```
 
-## iris tx service withdraw-fees
+## fury tx service withdraw-fees
 
 Withdraw the earned fees of a provider.
 
 ```bash
-iris tx service withdraw-fees [provider-address] [flags]
+fury tx service withdraw-fees [provider-address] [flags]
 ```
 
-## iris query service schema
+## fury query service schema
 
 Query the system schema by the schema name, only pricing and result allowed.
 
 ```bash
-iris query service schema [schema-name] [flags]
+fury query service schema [schema-name] [flags]
 ```
 
 ### Query the service pricing schema
 
 ```bash
-iris query service schema pricing
+fury query service schema pricing
 ```
 
 ### Query the response result schema
 
 ```bash
-iris query service schema result
+fury query service schema result
 ```
 
-## iris query service params
+## fury query service params
 
 Query values set as service parameters.
 
 ```bash
-iris query service params [flags]
+fury query service params [flags]
 ```

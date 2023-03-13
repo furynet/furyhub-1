@@ -18,7 +18,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/keys"
 	"github.com/tendermint/tendermint/libs/cli"
 
-	"github.com/irisnet/irishub/keystore"
+	"github.com/furynet/furyhub/keystore"
 )
 
 // Commands registers a sub-tree of commands to interact with

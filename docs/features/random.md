@@ -2,11 +2,11 @@
 
 ## Introduction
 
-This specification describes the usage and scope of random numbers on IRIShub. This feature is currently in beta and please assess the risk yourself before using.
+This specification describes the usage and scope of random numbers on FURYhub. This feature is currently in beta and please assess the risk yourself before using.
 
 ## Concepts
 
-Currently, IRIShub provides two random number generation methods: PRNG and TRNG.
+Currently, FURYhub provides two random number generation methods: PRNG and TRNG.
 
 ### Scope
 
@@ -45,7 +45,7 @@ rand = seed mod 10^20 / 10^20
 
 A hardware random number generator (HRNG) or true random number generator (TRNG) is a device that generates random numbers from a physical process, rather than by means of an algorithm. -- Wikipedia
 
-On the basis of PRNG, the external random number factor `Oracle Seed` is introduced using the oracle machine method, implemented through IRIShub Service.
+On the basis of PRNG, the external random number factor `Oracle Seed` is introduced using the oracle machine method, implemented through FURYhub Service.
 
 The random number "factor" specifically includes the following indicators:
 
@@ -71,6 +71,6 @@ rand = seed mod 10^20 / 10^20
 
 ## Actions
 
-- [Request Random Number](../cli-client/rand.md#iris-tx-random-request-random)
-- [Query Random Number](../cli-client/rand.md#iris-query-random-random)
-- [Query Random Queue](../cli-client/rand.md#iris-query-random-queue)
+- [Request Random Number](../cli-client/rand.md#fury-tx-random-request-random)
+- [Query Random Number](../cli-client/rand.md#fury-query-random-random)
+- [Query Random Queue](../cli-client/rand.md#fury-query-random-queue)

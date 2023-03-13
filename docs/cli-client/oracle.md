@@ -1,25 +1,25 @@
 # Oracle
 
-Oracle module allows you to manage the feed on IRIS Hub
+Oracle module allows you to manage the feed on FURY Hub
 
 ## Available Commands
 
 | Name                              | Description                                                                          |
 | --------------------------------- | ------------------------------------------------------------------------------------ |
-| [create](#iris-tx-oracle-create)  | Create a new feed, the feed will be in "paused" state                                |
-| [start](#iris-tx-oracle-start)    | Start a feed in "paused" state                                                       |
-| [pause](#iris-tx-oracle-pause)    | Pause a feed in "running" state                                                      |
-| [edit](#iris-tx-oracle-edit)      | Modify the feed information and update service invocation parameters by feed creator |
-| [feed](#iris-query-oracle-feed)   | Query the feed definition                                                            |
-| [feeds](#iris-query-oracle-feeds) | Query a group of feed definition                                                     |
-| [value](#iris-query-oracle-value) | Query the feed result                                                                |
+| [create](#fury-tx-oracle-create)  | Create a new feed, the feed will be in "paused" state                                |
+| [start](#fury-tx-oracle-start)    | Start a feed in "paused" state                                                       |
+| [pause](#fury-tx-oracle-pause)    | Pause a feed in "running" state                                                      |
+| [edit](#fury-tx-oracle-edit)      | Modify the feed information and update service invocation parameters by feed creator |
+| [feed](#fury-query-oracle-feed)   | Query the feed definition                                                            |
+| [feeds](#fury-query-oracle-feeds) | Query a group of feed definition                                                     |
+| [value](#fury-query-oracle-value) | Query the feed result                                                                |
 
-## iris tx oracle create
+## fury tx oracle create
 
 This command is used to create a new feed, the feed will be in "paused" state.
 
 ```bash
-iris tx oracle create [flags]
+fury tx oracle create [flags]
 ```
 
 **Flags:**
@@ -42,58 +42,58 @@ iris tx oracle create [flags]
 ### Create a new feed
 
 ```bash
-iris tx oracle create \
+fury tx oracle create \
     --feed-name="test-feed" \
     --latest-history=10 \
     --service-name="test-service" \
     --input=<request-data> \
     --providers=<provide1_address>,<provider2_address> \
-    --service-fee-cap=1iris \
+    --service-fee-cap=1fury \
     --timeout=2 \
     --frequency=10 \
     --total=10 \
     --threshold=1 \
     --aggregate-func="avg" \
     --value-json-path="high" \
-    --chain-id=irishub \
+    --chain-id=furyhub \
     --from=node0 \
-    --fees=0.3iris
+    --fees=0.3fury
 ```
 
-## iris tx oracle start
+## fury tx oracle start
 
 This command is used to start a feed in "paused" state
 
 ```bash
-iris tx oracle start [feed-name] [flags]
+fury tx oracle start [feed-name] [flags]
 ```
 
 ### Start a "paused" feed
 
 ```bash
-iris tx oracle start test-feed --chain-id=irishub --from=node0 --fees=0.3iris
+fury tx oracle start test-feed --chain-id=furyhub --from=node0 --fees=0.3fury
 ```
 
-## iris tx oracle pause
+## fury tx oracle pause
 
 This command is used to pause a feed in "running" state
 
 ```bash
-iris tx oracle pause [feed-name] [flags]
+fury tx oracle pause [feed-name] [flags]
 ```
 
 ### Pause a "running" feed
 
 ```bash
-iris tx oracle pause test-feed --chain-id=irishub --from=node0 --fees=0.3iris
+fury tx oracle pause test-feed --chain-id=furyhub --from=node0 --fees=0.3fury
 ```
 
-## iris tx oracle edit
+## fury tx oracle edit
 
-This command is used to edit an existing feed on IRIS Hub.
+This command is used to edit an existing feed on FURY Hub.
 
 ```bash
-iris tx oracle edit [feed-name] [flags]
+fury tx oracle edit [feed-name] [flags]
 ```
 
 **Flags:**
@@ -112,29 +112,29 @@ iris tx oracle edit [feed-name] [flags]
 ### Edit an existed feed
 
 ```bash
-iris tx oracle edit test-feed --chain-id=irishub --from=node0 --fees=0.3iris --latest-history=5
+fury tx oracle edit test-feed --chain-id=furyhub --from=node0 --fees=0.3fury --latest-history=5
 ```
 
-## iris query oracle feed
+## fury query oracle feed
 
 This command is used to query a feed
 
 ```bash
-iris query oracle feed [feed-name] [flags]
+fury query oracle feed [feed-name] [flags]
 ```
 
 ### Query an existed feed
 
 ```bash
-iris query oracle feed test-feed
+fury query oracle feed test-feed
 ```
 
-## iris query oracle feeds
+## fury query oracle feeds
 
 This command is used to query a group of feed
 
 ```bash
-iris query oracle feeds [flags]
+fury query oracle feeds [flags]
 ```
 
 **Flags:**
@@ -146,13 +146,13 @@ iris query oracle feeds [flags]
 ### Query a group of feed
 
 ```bash
-iris query oracle feeds --state=running
+fury query oracle feeds --state=running
 ```
 
-## iris query oracle value
+## fury query oracle value
 
 This command is used to query the result of a specified feed
 
 ```bash
-iris query oracle value test-feed
+fury query oracle value test-feed
 ```

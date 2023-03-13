@@ -26,7 +26,7 @@ func NewMinter(lastUpdate time.Time, inflationBase sdk.Int) Minter {
 func DefaultMinter() Minter {
 	return NewMinter(
 		time.Unix(0, 0).UTC(),
-		initialIssue.Mul(sdkmath.NewIntWithDecimal(1, 6)), // 20*(10^8)iris, 20*(10^8)*(10^6)uiris
+		initialIssue.Mul(sdkmath.NewIntWithDecimal(1, 6)), // 20*(10^8)fury, 20*(10^8)*(10^6)ufury
 	)
 }
 

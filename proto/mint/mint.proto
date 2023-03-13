@@ -1,10 +1,10 @@
 syntax = "proto3";
-package irishub.mint;
+package furyhub.mint;
 
 import "gogoproto/gogo.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/irisnet/irishub/modules/mint/types";
+option go_package = "github.com/furynet/furyhub/modules/mint/types";
 
 // Minter represents the minting state
 message Minter {

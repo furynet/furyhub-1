@@ -1,4 +1,4 @@
-module github.com/irisnet/irishub
+module github.com/furynet/furyhub
 
 go 1.18
 

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The incentive mechanism of POW is widely known and explicit: once a new block is produced, the block miner will acquire a certain amount of token as well as the accumulation of transaction fee in the block. As a POS blockchain network, the IRIShub has similar way to produce reward token but more complex mechanism to distribute the reward to each contributor.
+The incentive mechanism of POW is widely known and explicit: once a new block is produced, the block miner will acquire a certain amount of token as well as the accumulation of transaction fee in the block. As a POS blockchain network, the FURYhub has similar way to produce reward token but more complex mechanism to distribute the reward to each contributor.
 
 In each block producing period, all POW miners compete to calculate their work proof and the fastest one will be the winner. Actually, all loser miners don't offer any positive help or collaboration to the winner miner, and they are just the competitors. So it is reasonable to grant all reward to the winner miner. However, in POS blockchain network, we can't do that. Because each block producing process is the collaboration of all validators and delegators, which means the benefit should be share by all these contributors. As for how to distribute reward token to contributors, we will document and implement it in [distribution](distribution.md) module.
 
@@ -28,8 +28,8 @@ AnnualInflationAmount = inflationBasement * inflationRate
 blockInflationAmount = AnnualInflationAmount * blockCostTime / (year)
 ```
 
-The value of `inflationBasement` is specified in genesis file. By default its value `2000000000iris`(2 billion iris, `1 iris` equals `1*10^18 uiris`), and its value will never be changed.
-Suppose `blockCostTime` is 5000 millisecond, and `inflationRate` is `4%`, then the inflation amount will be `12675235125611580094uiris` (`12.675235125611580094iris`)
+The value of `inflationBasement` is specified in genesis file. By default its value `2000000000fury`(2 billion fury, `1 fury` equals `1*10^18 ufury`), and its value will never be changed.
+Suppose `blockCostTime` is 5000 millisecond, and `inflationRate` is `4%`, then the inflation amount will be `12675235125611580094ufury` (`12.675235125611580094fury`)
 
 ## Impact to users
 
@@ -37,12 +37,12 @@ The inflation calculation is automatically triggered by each block. So once a ne
 
 There is a command line interface and one LCD restful APIs which can query total loose tokens amount.
 
-`iris q staking pool`
+`fury q staking pool`
 
 This is much faster, but it cannot get merkle proof and verify proof. So if you doesn't trust the connected full node, please don't use this interface.
 
 ```bash
-iris q staking pool --node=<iris-node-url>
+fury q staking pool --node=<fury-node-url>
 ```
 
 Example Output:

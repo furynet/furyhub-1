@@ -12,8 +12,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/irisnet/irishub/modules/mint/types"
-	"github.com/irisnet/irishub/simapp"
+	"github.com/furynet/furyhub/modules/mint/types"
+	"github.com/furynet/furyhub/simapp"
 )
 
 type KeeperTestSuite struct {
@@ -56,7 +56,7 @@ func (suite *KeeperTestSuite) TestSetGetParamSet() {
 
 func (suite *KeeperTestSuite) TestMintCoins() {
 
-	mintCoins := sdk.NewCoins(sdk.NewCoin("iris", sdk.NewInt(1000)))
+	mintCoins := sdk.NewCoins(sdk.NewCoin("fury", sdk.NewInt(1000)))
 	err := suite.app.MintKeeper.MintCoins(suite.ctx, mintCoins)
 	require.NoError(suite.T(), err)
 
@@ -66,7 +66,7 @@ func (suite *KeeperTestSuite) TestMintCoins() {
 }
 
 func (suite *KeeperTestSuite) TestAddCollectedFees() {
-	mintCoins := sdk.NewCoins(sdk.NewCoin("iris", sdk.NewInt(1000)))
+	mintCoins := sdk.NewCoins(sdk.NewCoin("fury", sdk.NewInt(1000)))
 
 	feeCollector := suite.app.AccountKeeper.GetModuleAccount(suite.ctx, "fee_collector")
 	feeCollectorBalance := suite.app.BankKeeper.GetAllBalances(suite.ctx, feeCollector.GetAddress())

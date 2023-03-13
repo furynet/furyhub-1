@@ -4,7 +4,7 @@ order: 1
 
 # General Concepts
 
-## IRIShub Node Types
+## FURYhub Node Types
 
 ### Full Node
 
@@ -12,13 +12,13 @@ A full-node is a program that fully validates transactions and blocks of a block
 
 ### Validator Node
 
-The [IRIS Hub](../get-started/intro.md#iris-hub) is based on [Cosmos SDK](https://cosmos.network/docs/intro/) and [Tendermint](https://tendermint.com/docs/introduction/what-is-tendermint.html), which relies on a set of validators to secure the network. The role of validators is to run a full-node and participate in consensus by broadcasting votes which contain cryptographic signatures signed by their private keys. Validators commit new blocks to the blockchain and receive revenue in exchange for their work. They must also participate in governance by voting on proposals. Validators are weighted according to their total stake.
+The [FURY Hub](../get-started/intro.md#fury-hub) is based on [Cosmos SDK](https://cosmos.network/docs/intro/) and [Tendermint](https://tendermint.com/docs/introduction/what-is-tendermint.html), which relies on a set of validators to secure the network. The role of validators is to run a full-node and participate in consensus by broadcasting votes which contain cryptographic signatures signed by their private keys. Validators commit new blocks to the blockchain and receive revenue in exchange for their work. They must also participate in governance by voting on proposals. Validators are weighted according to their total stake.
 
 ### Validator Candidate Node
 
 Only top 100 bonded full nodes can become validator nodes, the rest will become candidates. The situation will change as delegation amount changes.
 
-## IRIShub User Types
+## FURYhub User Types
 
 ### Validator Operator
 
@@ -26,7 +26,7 @@ A validator operator is the only one who can operate the Validator's information
 
 ### Delegator
 
-Delegators are IRIS holders who cannot, or do not want to run a validator themselves. IRIS holders can delegate IRIS to a validator and obtain a part of their revenue in exchange. They can earn as much as the validators and only need to pay some commission.
+Delegators are FURY holders who cannot, or do not want to run a validator themselves. FURY holders can delegate FURY to a validator and obtain a part of their revenue in exchange. They can earn as much as the validators and only need to pay some commission.
 
 ### Profiler
 
@@ -36,15 +36,15 @@ Profiler is a special type of user who can submit software upgrade/halt proposal
 
 Trustee is a special type of user who will receive funds from CommunityTaxUsage proposals
 
-## IRIS Token
+## FURY Token
 
-The IRIS hub has its own native token known as *IRIS*.  It is designed to serve three purposes in the network.
+The FURY hub has its own native token known as *FURY*.  It is designed to serve three purposes in the network.
 
-- **Staking.** Similar to the ATOM token in the Cosmos Hub, the IRIS token will be used as a staking token to secure the PoS blockchain.
-- **Transaction Fee.** The IRIS token will also be used to pay fees for all transactions in the IRIS network.
-- **Service Fee.** It is required that service providers in the IRIS network charge service fees denominated in the IRIS token.
+- **Staking.** Similar to the ATOM token in the Cosmos Hub, the FURY token will be used as a staking token to secure the PoS blockchain.
+- **Transaction Fee.** The FURY token will also be used to pay fees for all transactions in the FURY network.
+- **Service Fee.** It is required that service providers in the FURY network charge service fees denominated in the FURY token.
 
-It is intended that the IRIS network will eventually support all whitelisted fee tokens from the Cosmos network, which can be used to pay the transaction fees and service fees.
+It is intended that the FURY network will eventually support all whitelisted fee tokens from the Cosmos network, which can be used to pay the transaction fees and service fees.
 
 ## Staking Rewards
 
@@ -52,34 +52,34 @@ The validator and its delegators can share the following rewards by proportion:
 
 - **Block Inflation**
 
-  Block Inflation exists to incentivize IRIS holders to stake. The more staked IRIS tokens are, more secure the network become(Read more about [Staking](../features/staking.md)).
+  Block Inflation exists to incentivize FURY holders to stake. The more staked FURY tokens are, more secure the network become(Read more about [Staking](../features/staking.md)).
 
-  Block Inflation will be [distributed every block](../features/mint.md). [Inflation rate](../features/mint.md) in IRIShub for the first year will be 4%.  **This ration could be adjusted by `parameter-change` proposals**.
-  In this way, loose IRIS will devalue year by year.
+  Block Inflation will be [distributed every block](../features/mint.md). [Inflation rate](../features/mint.md) in FURYhub for the first year will be 4%.  **This ration could be adjusted by `parameter-change` proposals**.
+  In this way, loose FURY will devalue year by year.
 
 - **Block Proposer Reward**
 
-  In IRIShub, the probability for being a proposer is proportional to the validator's bonded tokens. If one proposed block is finalized, the proposer gets extra rewards for it.
+  In FURYhub, the probability for being a proposer is proportional to the validator's bonded tokens. If one proposed block is finalized, the proposer gets extra rewards for it.
 
 - **Fee**
 
-  Each transaction needs a [fee](fee.md#fee) for compensating validators' work[Gas](fee.md#gas). These fees can be paid with IRIS and may later in any tokens which are whitelisted by the IRIShub's governance. Fees are distributed to validators in proportion to their stake. A minimum fee/gas ration is set in IRIShub.
+  Each transaction needs a [fee](fee.md#fee) for compensating validators' work[Gas](fee.md#gas). These fees can be paid with FURY and may later in any tokens which are whitelisted by the FURYhub's governance. Fees are distributed to validators in proportion to their stake. A minimum fee/gas ration is set in FURYhub.
 
 Each validator receives revenue in proportion to its total stake. However, before this revenue is distributed to its delegators, the validator can apply a commission for providing staking services.
 
 ### Staking Rewards Calculation Formula
 
-The following formulas are based on the current [IRIShub Mainnet Params](gov-params.md).
+The following formulas are based on the current [FURYhub Mainnet Params](gov-params.md).
 
 #### Annual Rewards (ignore proposer rewards and fees)
 
-- **AnnualInflation =** `Base * InflationRate` (aka 2 billion * 4% = 80 million iris)
+- **AnnualInflation =** `Base * InflationRate` (aka 2 billion * 4% = 80 million fury)
 - **ValidatorRewards =** `(AnnualInflation / BondedTokens) * (1 - CommunityTax) * (ValidatorSelfDelegation +  DelegatorsDelegation * ValidatorCommissionRate)`
 - **DelegatorRewards =** `(AnnualInflation / BondedTokens) * (1 - CommunityTax) * DelegatorSelfDelegation * (1 - ValidatorCommissionRate)`
 
 #### Block Rewards
 
-- **BlockInflation =** `AnnualInflation / (365*24*60*12)` (aka 12.68 iris)
+- **BlockInflation =** `AnnualInflation / (365*24*60*12)` (aka 12.68 fury)
 - **ProposerExtraRewards =** `(BaseProposerReward + BonusProposerReward * PrecommitPower/TotalVotingPower) * (BlockInflation + BlockCollectedFees)`
 - **BlockRewards =** `(BlockInflation + BlockCollectedFees) * (1 - CommunityTax) - ProposerExtraRewards`
 - **ValidatorTotalRewards =**

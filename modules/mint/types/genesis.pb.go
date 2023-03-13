@@ -77,7 +77,7 @@ func (m *GenesisState) GetParams() Params {
 }
 
 func init() {
-	proto.RegisterType((*GenesisState)(nil), "irishub.mint.GenesisState")
+	proto.RegisterType((*GenesisState)(nil), "furyhub.mint.GenesisState")
 }
 
 func init() { proto.RegisterFile("mint/genesis.proto", fileDescriptor_50813f2cd53c1776) }

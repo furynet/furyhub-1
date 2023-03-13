@@ -6,18 +6,18 @@ Tx module allows you to sign or broadcast transactions
 
 | Name                            | Description                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------- |
-| [sign](#iris-tx-sign)           | Sign transactions generated offline                                                   |
-| [broadcast](#iris-tx-broadcast) | Broadcast a signed transaction to the network                                         |
-| [multisign](#iris-tx-multisign) | Sign the same transaction by multiple accounts                                        |
-| [tx](#iris-query-tx)            | Query for a transaction by hash in a committed block                                  |
-| [txs](#iris-query-txs)          | Search for transactions that match the exact given events where results are paginated |
+| [sign](#fury-tx-sign)           | Sign transactions generated offline                                                   |
+| [broadcast](#fury-tx-broadcast) | Broadcast a signed transaction to the network                                         |
+| [multisign](#fury-tx-multisign) | Sign the same transaction by multiple accounts                                        |
+| [tx](#fury-query-tx)            | Query for a transaction by hash in a committed block                                  |
+| [txs](#fury-query-txs)          | Search for transactions that match the exact given events where results are paginated |
 
-## iris tx sign
+## fury tx sign
 
 Sign transactions in generated offline file. The file created with the --generate-only flag.
 
 ```bash
-iris tx sign <file> [flags]
+fury tx sign <file> [flags]
 ```
 
 ### Flags
@@ -39,7 +39,7 @@ You can generate any type of txs offline by appending the flag `--generate-only`
 We use a transfer tx in the following examples:
 
 ```bash
-iris tx bank send iaa1w9lvhwlvkwqvg08q84n2k4nn896u9pqx93velx iaa15uys54epmd2xzhcn32szps56wvev40tt908h62 10iris --chain-id=irishub --generate-only
+fury tx bank send iaa1w9lvhwlvkwqvg08q84n2k4nn896u9pqx93velx iaa15uys54epmd2xzhcn32szps56wvev40tt908h62 10fury --chain-id=furyhub --generate-only
 ```
 
 The `unsigned.json` should look like:
@@ -56,7 +56,7 @@ The `unsigned.json` should look like:
                     "to_address": "iaa15uys54epmd2xzhcn32szps56wvev40tt908h62",
                     "amount": [
                         {
-                            "denom": "iris",
+                            "denom": "fury",
                             "amount": "10"
                         }
                     ]
@@ -76,7 +76,7 @@ The `unsigned.json` should look like:
 ### Sign tx offline
 
 ```bash
-iris tx sign unsigned.json --name=<key-name> > signed.tx
+fury tx sign unsigned.json --name=<key-name> > signed.tx
 ```
 
 The `signed.json` should look like:
@@ -94,7 +94,7 @@ The `signed.json` should look like:
                             "address": "iaa106nhdckyf996q69v3qdxwe6y7408pvyvyxzhxh",
                             "coins": [
                                 {
-                                    "denom": "uiris",
+                                    "denom": "ufury",
                                     "amount": "1000000"
                                 }
                             ]
@@ -105,7 +105,7 @@ The `signed.json` should look like:
                             "address": "iaa1893x4l2rdshytfzvfpduecpswz7qtpstevr742",
                             "coins": [
                                 {
-                                    "denom": "uiris",
+                                    "denom": "ufury",
                                     "amount": "1000000"
                                 }
                             ]
@@ -117,7 +117,7 @@ The `signed.json` should look like:
         "fee": {
             "amount": [
                 {
-                    "denom": "uiris",
+                    "denom": "ufury",
                     "amount": "4000000"
                 }
             ],
@@ -141,24 +141,24 @@ The `signed.json` should look like:
 
 Note the `signature` in the `signed.json` should no longer be empty after signing.
 
-Now it's ready to [broadcast the signed tx](#iris-tx-broadcast) to the IRIS Hub.
+Now it's ready to [broadcast the signed tx](#fury-tx-broadcast) to the FURY Hub.
 
-## iris tx broadcast
+## fury tx broadcast
 
 This command is used to broadcast an offline signed transaction to the network.
 
 ### Broadcast offline signed transaction
 
 ```bash
-iris tx broadcast signed.json --chain-id=irishub
+fury tx broadcast signed.json --chain-id=furyhub
 ```
 
-## iris tx multisign
+## fury tx multisign
 
 Sign a transaction by multiple accounts. The tx could be broadcasted only when the number of signatures meets the multisig-threshold.
 
 ```bash
-iris tx multisign <file> <key-name> <[signature]...> [flags]
+fury tx multisign <file> <key-name> <[signature]...> [flags]
 ```
 
 ### Generate an offline tx by multisig key
@@ -168,7 +168,7 @@ No multisig key? [Create one](keys.md#create-a-multisig-key)
 :::
 
 ```bash
-iris tx bank send <from> <to> 10iris --fees=0.3iris --chain-id=irishub --from=<multisig-keyname> --generate-only > unsigned.json
+fury tx bank send <from> <to> 10fury --fees=0.3fury --chain-id=furyhub --from=<multisig-keyname> --generate-only > unsigned.json
 ```
 
 ### Sign the multisig tx
@@ -176,7 +176,7 @@ iris tx bank send <from> <to> 10iris --fees=0.3iris --chain-id=irishub --from=<m
 #### Query the multisig address
 
 ```bash
-iris keys show <multisig-keyname>
+fury keys show <multisig-keyname>
 ```
 
 #### Sign the `unsigned.json`
@@ -186,13 +186,13 @@ Assume the multisig-threshold is 2, here we sign the `unsigned.json` by 2 of the
 Sign the tx by signer-1:
 
 ```bash
-iris tx sign unsigned.json --from=<signer-keyname-1> --chain-id=irishub --multisig=<multisig-address> --signature-only > signed-1.json
+fury tx sign unsigned.json --from=<signer-keyname-1> --chain-id=furyhub --multisig=<multisig-address> --signature-only > signed-1.json
 ```
 
 Sign the tx by signer-2:
 
 ```bash
-iris tx sign unsigned.json --from=<signer-keyname-2> --chain-id=irishub --multisig=<multisig-address> --signature-only > signed-2.json
+fury tx sign unsigned.json --from=<signer-keyname-2> --chain-id=furyhub --multisig=<multisig-address> --signature-only > signed-2.json
 ```
 
 #### Merge the signatures
@@ -200,21 +200,21 @@ iris tx sign unsigned.json --from=<signer-keyname-2> --chain-id=irishub --multis
 Merge all the signatures into `signed.json`
 
 ```bash
-iris tx multisign --chain-id=irishub unsigned.json <multisig-keyname> signed-1.json signed-2.json > signed.json
+fury tx multisign --chain-id=furyhub unsigned.json <multisig-keyname> signed-1.json signed-2.json > signed.json
 ```
 
-Now you can [broadcast the signed tx](#iris-tx-broadcast).
+Now you can [broadcast the signed tx](#fury-tx-broadcast).
 
-## iris query tx
+## fury query tx
 
 ```bash
-iris query tx [hash] [flags]
+fury query tx [hash] [flags]
 ```
 
-## iris query txs
+## fury query txs
 
 ```bash
-iris query txs --events 'message.sender=<iaa...>&message.action=xxxx' --page 1 --limit 30
+fury query txs --events 'message.sender=<iaa...>&message.action=xxxx' --page 1 --limit 30
 ```
 
 Among the possible values of `message.action`:

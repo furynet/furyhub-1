@@ -17,7 +17,7 @@ jobs:
       - name: Prepare
         id: prep
         run: |
-          DOCKER_IMAGE=irisnet/irishub
+          DOCKER_IMAGE=furynet/furyhub
           VERSION=noop
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF#refs/tags/}
@@ -45,7 +45,7 @@ jobs:
           username: ${{secrets.DOCKER_USER}}
           password: ${{secrets.DOCKER_PASS}}
   
-      # Using the github action, push the IRISHub amd64/arm64 image to Docker Hub
+      # Using the github action, push the FURYHub amd64/arm64 image to Docker Hub
       - name: Publish to Docker Hub
         uses: docker/build-push-action@v2
         with:
@@ -53,9 +53,9 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
           platforms: linux/amd64,linux/arm64
           
-#       - name: Build irishub image
-#         run: source ~/.bashrc; sudo docker build -t irisnet/irishub:latest .
+#       - name: Build furyhub image
+#         run: source ~/.bashrc; sudo docker build -t furynet/furyhub:latest .
 #       - name: Login dockerhub
 #         run: sudo docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASS}}
-#       - name: Publish irishub image
-#         run: sudo docker push irisnet/irishub:latest
+#       - name: Publish furyhub image
+#         run: sudo docker push furynet/furyhub:latest

@@ -2,11 +2,11 @@
 order: 1
 ---
 
-# IRIS Hub Monitor
+# FURY Hub Monitor
 
 ## Introduction
 
-IRIShub can report and serve the Prometheus metrics, which can be consumed by Prometheus collector(s).
+FURYhub can report and serve the Prometheus metrics, which can be consumed by Prometheus collector(s).
 
 This functionality is disabled by default.
 
@@ -14,7 +14,7 @@ To enable the Prometheus metrics, set `prometheus = true` in your config file(co
 
 ## Metrics
 
-Application metrics, namespace: `iris`
+Application metrics, namespace: `fury`
 
 | **Name**                          | **Type** | **Tags**                       | **Description**                                                               |
 | --------------------------------- | -------- | ------------------------------ | ----------------------------------------------------------------------------- |
@@ -66,18 +66,18 @@ Consensus metrics, namespace: `tendermint`
 | state_recheck_time                   | Histogram |                  | Time cost on recheck in ms                                      |
 | state_app_hash_conflict              | Counter   | proposer, height | App hash conflict error                                         |
 
-IRIShub metrics also contains tendermint metrics, Visit [tendermint metrics](https://github.com/irisnet/tendermint/blob/irisnet/master/docs/tendermint-core/metrics.md) for more information.
+FURYhub metrics also contains tendermint metrics, Visit [tendermint metrics](https://github.com/furynet/tendermint/blob/furynet/master/docs/tendermint-core/metrics.md) for more information.
 
 ## Start Monitor
 
-This is an example for getting started with the IRIShub Monitor by using docker.
+This is an example for getting started with the FURYhub Monitor by using docker.
 
 ### Edit Prometheus config file
 
 You can download the example [prometheus.yml](https://raw.githubusercontent.com/prometheus/prometheus/master/documentation/examples/prometheus.yml)  to the `~/volumes/prometheus/` and add a job under the `scrape_configs` of the `prometheus.yml`:
 
 ```yaml
-      - job_name: irishub
+      - job_name: furyhub
           static_configs:
           - targets: ['localhost:26660']
             labels:

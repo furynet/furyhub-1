@@ -41,8 +41,8 @@ import (
 
 	servercfg "github.com/evmos/ethermint/server/config"
 
-	guardiantypes "github.com/irisnet/irishub/modules/guardian/types"
-	iristypes "github.com/irisnet/irishub/types"
+	guardiantypes "github.com/furynet/furyhub/modules/guardian/types"
+	furytypes "github.com/furynet/furyhub/types"
 	randomtypes "github.com/irisnet/irismod/modules/random/types"
 	servicetypes "github.com/irisnet/irismod/modules/service/types"
 )
@@ -56,7 +56,7 @@ var (
 	flagStartingIPAddress = "starting-ip-address"
 )
 
-const nativeIrisMinUnit = "uiris"
+const nativeFuryMinUnit = "ufury"
 
 var PowerReduction = sdk.NewIntFromUint64(1000000000000000000)
 
@@ -69,7 +69,7 @@ func testnetCmd(mbm module.BasicManager, genBalIterator banktypes.GenesisBalance
 necessary files (private validator, genesis, config, etc.).
 Note, strict routability for addresses is turned off in the config file.
 Example:
-	iris testnet --v 4 --output-dir ./output --starting-ip-address 192.168.10.2
+	fury testnet --v 4 --output-dir ./output --starting-ip-address 192.168.10.2
 	`,
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			clientCtx := client.GetClientContextFromCmd(cmd)
@@ -98,8 +98,8 @@ Example:
 	cmd.Flags().Int(flagNumValidators, 4, "Number of validators to initialize the testnet with")
 	cmd.Flags().StringP(flagOutputDir, "o", "./mytestnet", "Directory to store initialization data for the testnet")
 	cmd.Flags().String(flagNodeDirPrefix, "node", "Prefix the directory name for each node with (node results in node0, node1, ...)")
-	cmd.Flags().String(flagNodeDaemonHome, "iris", "Home directory of the node's daemon configuration")
-	cmd.Flags().String(flagNodeCLIHome, "iriscli", "Home directory of the node's cli configuration")
+	cmd.Flags().String(flagNodeDaemonHome, "fury", "Home directory of the node's daemon configuration")
+	cmd.Flags().String(flagNodeCLIHome, "furycli", "Home directory of the node's cli configuration")
 	cmd.Flags().String(flagStartingIPAddress, "192.168.0.1", "Starting IP address (192.168.0.1 results in persistent peers list ID0@192.168.0.1:46656, ID1@192.168.0.2:46656, ...)")
 	cmd.Flags().String(flags.FlagChainID, "", "genesis file chain-id, if left blank will be randomly created")
 	cmd.Flags().String(server.FlagMinGasPrices, fmt.Sprintf("0.000006%s", sdk.DefaultBondDenom), "Minimum gas prices to accept for transactions; All fees in a tx must meet this minimum (e.g. 0.01photino,0.001stake)")
@@ -220,13 +220,13 @@ func InitTestnet(
 		accTokens := sdk.TokensFromConsensusPower(1000, sdk.DefaultPowerReduction)
 		accStakingTokens := sdk.TokensFromConsensusPower(500, sdk.DefaultPowerReduction)
 		accEvmTokens := sdk.TokensFromConsensusPower(5000, PowerReduction)
-		accIrisTokens := sdk.TokensFromConsensusPower(5000, sdk.DefaultPowerReduction)
+		accFuryTokens := sdk.TokensFromConsensusPower(5000, sdk.DefaultPowerReduction)
 
 		coins := sdk.Coins{
 			sdk.NewCoin(fmt.Sprintf("%stoken", nodeDirName), accTokens),
 			sdk.NewCoin(sdk.DefaultBondDenom, accStakingTokens),
-			sdk.NewCoin(iristypes.EvmToken.MinUnit, accEvmTokens),
-			sdk.NewCoin(nativeIrisMinUnit, accIrisTokens),
+			sdk.NewCoin(furytypes.EvmToken.MinUnit, accEvmTokens),
+			sdk.NewCoin(nativeFuryMinUnit, accFuryTokens),
 		}
 
 		genBalances = append(genBalances, banktypes.Balance{Address: addr.String(), Coins: coins.Sort()})
@@ -272,7 +272,7 @@ func InitTestnet(
 			return err
 		}
 
-		customAppTemplate, _ := servercfg.AppConfig(iristypes.NativeToken.MinUnit)
+		customAppTemplate, _ := servercfg.AppConfig(furytypes.NativeToken.MinUnit)
 		srvconfig.SetConfigTemplate(customAppTemplate)
 
 		srvconfig.WriteConfigFile(filepath.Join(nodeDir, "config/app.toml"), simappConfig)
@@ -335,21 +335,21 @@ func initGenFiles(
 	// set the point token in the genesis state
 	var tokenGenState tokentypes.GenesisState
 	clientCtx.Codec.MustUnmarshalJSON(appGenState[tokentypes.ModuleName], &tokenGenState)
-	tokenGenState.Tokens = append(tokenGenState.Tokens, iristypes.EvmToken)
+	tokenGenState.Tokens = append(tokenGenState.Tokens, furytypes.EvmToken)
 	appGenState[tokentypes.ModuleName] = clientCtx.Codec.MustMarshalJSON(&tokenGenState)
 
 	//set system service in the genesis state
 	var serviceGenState servicetypes.GenesisState
 	clientCtx.Codec.MustUnmarshalJSON(appGenState[servicetypes.ModuleName], &serviceGenState)
 	serviceGenState.Definitions = append(serviceGenState.Definitions, servicetypes.GenOraclePriceSvcDefinition())
-	serviceGenState.Bindings = append(serviceGenState.Bindings, servicetypes.GenOraclePriceSvcBinding(iristypes.NativeToken.MinUnit))
+	serviceGenState.Bindings = append(serviceGenState.Bindings, servicetypes.GenOraclePriceSvcBinding(furytypes.NativeToken.MinUnit))
 	serviceGenState.Definitions = append(serviceGenState.Definitions, randomtypes.GetSvcDefinition())
 	appGenState[servicetypes.ModuleName] = clientCtx.Codec.MustMarshalJSON(&serviceGenState)
 
 	// set the evm fee token denom in the genesis state
 	var evmGenState evmtypes.GenesisState
 	clientCtx.Codec.MustUnmarshalJSON(appGenState[evmtypes.ModuleName], &evmGenState)
-	evmGenState.Params.EvmDenom = iristypes.EvmToken.MinUnit
+	evmGenState.Params.EvmDenom = furytypes.EvmToken.MinUnit
 	appGenState[evmtypes.ModuleName] = clientCtx.Codec.MustMarshalJSON(&evmGenState)
 
 	appGenStateJSON, err := json.MarshalIndent(appGenState, "", "  ")
