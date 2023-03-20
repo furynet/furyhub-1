@@ -329,8 +329,8 @@ func init() {
 		Name:          "Gridiron staking token",
 		Scale:         6,
 		MinUnit:       "ufury",
-		InitialSupply: 48000000000000,
-		MaxSupply:     420000000000000,
+		InitialSupply: 200000000,
+		MaxSupply:     1000000000,
 		Mintable:      true,
 		Owner:         sdk.AccAddress(crypto.AddressHash([]byte(tokentypes.ModuleName))).String(),
 	}
