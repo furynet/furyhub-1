@@ -168,27 +168,28 @@ benchmark:
 ### Local validator nodes using docker and docker-compose
 
 build-docker-furynode:
-	docker build -t fanfury/fanfury .
+	docker build -t fanfury/fanfury:furyhub .
 
-localnet-init:
-	@if ! [ -f build/nodecluster/node0/grid/config/genesis.json ]; then docker run --rm -v $(CURDIR)/build:/home fanfury/fanfury grid testnet --v 4 --output-dir /home/nodecluster --chain-id furytestnet-1 --keyring-backend test --starting-ip-address 192.168.10.2 ; fi
+testnet-init:
+	@if ! [ -f build/nodecluster/node0/grid/config/genesis.json ]; then docker run --rm -v $(CURDIR)/build:/home fanfury/fanfury:furyhub grid testnet --v 4 --output-dir /home/nodecluster --chain-id furytest-1 --keyring-backend test --starting-ip-address 192.168.10.2 ; fi
 	@echo "To install jq command, please refer to this page: https://stedolan.github.io/jq/download/"
-	@cat build/nodecluster/node0/grid/config/genesis.json | jq '.app_state.auth.accounts+= [{"@type": "/cosmos.auth.v1beta1.BaseAccount","address":"did:fury:aa1ljemm0yznz58qxxs8xyak7fashcfxf5lgl4zjx"}]' | jq '.app_state.bank.balances+= [{"address":"did:fury:aa1ljemm0yznz58qxxs8xyak7fashcfxf5lgl4zjx","coins":[{"denom":"ufury","amount":"1000000000000"}]}]' > build/genesis_temp.json
+	@jq '.app_state.auth.accounts+= [{"@type":"/cosmos.auth.v1beta1.BaseAccount","address":"did:fury:1ljemm0yznz58qxxs8xyak7fashcfxf5lgl4zjx","pub_key":null,"account_number":"0","sequence":"0"}] | .app_state.bank.balances+= [{"address":"did:fury:1ljemm0yznz58qxxs8xyak7fashcfxf5lgl4zjx","coins":[{"denom":"ufury","amount":"1000000000000"}]}]' build/nodecluster/node0/grid/config/genesis.json > build/genesis_temp.json ;
 	@sudo cp build/genesis_temp.json build/nodecluster/node0/grid/config/genesis.json
 	@sudo cp build/genesis_temp.json build/nodecluster/node1/grid/config/genesis.json
 	@sudo cp build/genesis_temp.json build/nodecluster/node2/grid/config/genesis.json
 	@sudo cp build/genesis_temp.json build/nodecluster/node3/grid/config/genesis.json
 	@rm build/genesis_temp.json
-	@echo "Faucet address: did:fury:aa1ljemm0yznz58qxxs8xyak7fashcfxf5lgl4zjx"
+	@echo "Faucet address: did:fury:1ljemm0yznz58qxxs8xyak7fashcfxf5lgl4zjx" ;
 	@echo "Faucet coin amount: 1000000000000ufury"
 	@echo "Faucet key seed: tube lonely pause spring gym veteran know want grid tired taxi such same mesh charge orient bracket ozone concert once good quick dry boss"
-localnet-start: localnet-init localnet-stop
+
+testnet-start:
 	docker-compose up -d
 
-localnet-stop:
+testnet-stop:
 	docker-compose down
 
-localnet-clean:
+testnet-clean:
 	docker-compose down
 	sudo rm -rf build/*
 	
